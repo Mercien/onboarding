@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brands Digitals — Digital Transformation Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --navy:       #080C16;
+  --navy-mid:   #0E1420;
+  --navy-light: #151E2E;
+  --navy-card:  #1A2438;
+  --orange:     #F97316;
+  --orange-lt:  #FB923C;
+  --gold:       #FBBF24;
+  --white:      #FFFFFF;
+  --off-white:  #F1F5F9;
+  --muted:      #94A3B8;
+  --muted-lt:   #CBD5E1;
+  --border:     rgba(255,255,255,0.07);
+  --border-md:  rgba(255,255,255,0.12);
+  --surface:    rgba(255,255,255,0.04);
+  --orange-bg:  rgba(249,115,22,0.08);
+  --orange-bdr: rgba(249,115,22,0.2);
+}
+
+/* ═══════════════════════════════════════════
+   RESET + BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5 { font-family:'Syne',sans-serif; line-height:1.08; }
+a { text-decoration:none; color:inherit; }
+ul { list-style:none; }
+img { display:block; max-width:100%; }
+
+/* noise overlay */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.022; pointer-events:none; z-index:0;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════ */
+.page { display:none; min-height:100vh; position:relative; z-index:1; }
+.page.active { display:block; }
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 64px;
+  backdrop-filter:blur(20px);
+  background:rgba(8,12,22,0.88);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s;
+}
+.nav-logo {
+  font-family:'Syne',sans-serif; font-weight:800; font-size:19px;
+  letter-spacing:-.5px; cursor:pointer;
+}
+.nav-logo span { color:var(--orange); }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a {
+  color:var(--muted); font-size:14px; font-weight:400;
+  letter-spacing:.2px; transition:color .2s; cursor:pointer;
+}
+.nav-links a:hover, .nav-links a.active { color:var(--white); }
+.nav-cta {
+  background:var(--orange); color:var(--white);
+  padding:10px 24px; border-radius:7px; font-size:14px;
+  font-weight:500; transition:all .2s; cursor:pointer;
+  font-family:'DM Sans',sans-serif; white-space:nowrap;
+}
+.nav-cta:hover { background:var(--orange-lt); transform:translateY(-1px); box-shadow:0 6px 20px rgba(249,115,22,.3); }
+.nav-hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.nav-hamburger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; transition:.3s; }
+.mobile-menu {
+  display:none; position:fixed; top:65px; left:0; right:0; z-index:190;
+  background:rgba(8,12,22,.97); border-bottom:1px solid var(--border);
+  padding:24px 24px 32px; flex-direction:column; gap:0;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  padding:14px 0; border-bottom:1px solid var(--border);
+  color:var(--muted); font-size:16px; cursor:pointer;
+  transition:color .2s;
+}
+.mobile-menu a:hover { color:var(--white); }
+.mobile-menu .mob-cta {
+  margin-top:20px; background:var(--orange); color:var(--white);
+  padding:14px 24px; border-radius:7px; text-align:center;
+  font-weight:500; font-size:15px;
+}
+
+/* ═══════════════════════════════════════════
+   SHARED COMPONENTS
+═══════════════════════════════════════════ */
+.eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--orange-bg); border:1px solid var(--orange-bdr);
+  color:var(--orange); padding:5px 14px; border-radius:100px;
+  font-size:11px; font-weight:600; letter-spacing:1.2px;
+  text-transform:uppercase; width:fit-content;
+}
+.eyebrow::before {
+  content:''; width:5px; height:5px; background:var(--orange);
+  border-radius:50%; animation:blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+.section-label {
+  font-size:11px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--orange); margin-bottom:14px;
+}
+.section-h {
+  font-size:clamp(30px,3.5vw,50px); font-weight:800;
+  letter-spacing:-1.8px; line-height:1.05;
+}
+.section-h .dim { color:var(--muted); }
+.section-h .acc { color:var(--orange); }
+
+.divider { width:100%; height:1px; background:var(--border); }
+
+/* Buttons */
+.btn-primary {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--orange); color:var(--white);
+  padding:13px 30px; border-radius:8px;
+  font-size:15px; font-weight:500;
+  font-family:'DM Sans',sans-serif;
+  transition:all .2s; cursor:pointer; border:none;
+  white-space:nowrap;
+}
+.btn-primary:hover { background:var(--orange-lt); transform:translateY(-2px); box-shadow:0 10px 30px rgba(249,115,22,.3); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--border-md); color:var(--muted-lt);
+  padding:13px 28px; border-radius:8px;
+  font-size:15px; font-weight:400;
+  font-family:'DM Sans',sans-serif;
+  transition:all .2s; cursor:pointer; background:none;
+  white-space:nowrap;
+}
+.btn-outline:hover { border-color:var(--orange); color:var(--white); }
+
+/* Cards base */
+.card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:12px; padding:36px; transition:border-color .25s, transform .25s;
+}
+.card:hover { border-color:var(--orange-bdr); transform:translateY(-3px); }
+
+/* Tag pill */
+.tag {
+  display:inline-block; background:var(--surface);
+  border:1px solid var(--border); padding:5px 13px;
+  border-radius:100px; font-size:12px; color:var(--muted);
+  transition:all .2s;
+}
+.tag:hover { border-color:var(--orange-bdr); color:var(--white); }
+
+/* Stat block */
+.stat-grid { display:flex; gap:48px; flex-wrap:wrap; }
+.stat { }
+.stat-n { font-family:'Syne',sans-serif; font-size:38px; font-weight:800; letter-spacing:-1.5px; line-height:1; }
+.stat-n span { color:var(--orange); }
+.stat-l { font-size:13px; color:var(--muted); margin-top:5px; font-weight:300; }
+
+/* Marquee */
+.marquee-band {
+  overflow:hidden; border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--navy-mid); padding:14px 0;
+}
+.marquee-inner { display:flex; width:max-content; animation:marquee 35s linear infinite; }
+.marquee-inner:hover { animation-play-state:paused; }
+.m-item {
+  display:flex; align-items:center; gap:14px;
+  padding:0 36px; font-size:12px; font-weight:500;
+  color:var(--muted); letter-spacing:1.2px; text-transform:uppercase;
+  white-space:nowrap;
+}
+.m-dot { width:4px; height:4px; background:var(--orange); border-radius:50%; flex-shrink:0; }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* Fade-in */
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.fade-up { animation:fadeUp .7s ease both; }
+.delay-1 { animation-delay:.1s; }
+.delay-2 { animation-delay:.2s; }
+.delay-3 { animation-delay:.3s; }
+.delay-4 { animation-delay:.4s; }
+.delay-5 { animation-delay:.5s; }
+
+/* ═══════════════════════════════════════════
+   PAGE HERO GENERIC
+═══════════════════════════════════════════ */
+.page-hero {
+  padding:160px 64px 90px;
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.page-hero-orb {
+  position:absolute; width:500px; height:500px;
+  background:radial-gradient(circle, rgba(249,115,22,.13) 0%, transparent 70%);
+  top:-100px; right:-80px; border-radius:50%; pointer-events:none;
+}
+.page-hero h1 {
+  font-size:clamp(40px,5vw,72px); font-weight:800;
+  letter-spacing:-2.5px; max-width:800px; margin-top:28px;
+}
+.page-hero p {
+  font-size:17px; color:var(--muted); max-width:520px;
+  margin-top:22px; line-height:1.75; font-weight:300;
+}
+.hero-actions { display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background:var(--navy-mid); border-top:1px solid var(--border);
+  padding:72px 64px 40px; position:relative; z-index:1;
+}
+.footer-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px;
+  padding-bottom:48px; border-bottom:1px solid var(--border);
+}
+.footer-brand-name { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; letter-spacing:-.5px; }
+.footer-brand-name span { color:var(--orange); }
+.footer-tagline { font-size:13px; color:var(--muted); margin-top:10px; line-height:1.7; max-width:260px; font-weight:300; }
+.footer-social { display:flex; gap:12px; margin-top:24px; }
+.social-btn {
+  width:36px; height:36px; border:1px solid var(--border);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+  color:var(--muted); font-size:13px; cursor:pointer;
+  transition:all .2s;
+}
+.social-btn:hover { border-color:var(--orange-bdr); color:var(--orange); }
+.footer-col h5 {
+  font-size:11px; font-weight:700; letter-spacing:1.8px;
+  text-transform:uppercase; color:var(--muted); margin-bottom:18px;
+}
+.footer-col ul li { margin-bottom:10px; }
+.footer-col ul a { color:var(--muted); font-size:14px; font-weight:300; transition:color .2s; cursor:pointer; }
+.footer-col ul a:hover { color:var(--white); }
+.footer-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:28px; flex-wrap:wrap; gap:12px;
+}
+.footer-copy { font-size:13px; color:var(--muted); font-weight:300; }
+.footer-copy a { color:var(--orange); }
+.footer-badge {
+  background:var(--surface); border:1px solid var(--border);
+  padding:6px 14px; border-radius:100px; font-size:12px;
+  color:var(--muted); font-weight:400;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE: HOME
+═══════════════════════════════════════════ */
+#page-home {}
+
+/* Hero */
+.home-hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  justify-content:center; padding:140px 64px 100px;
+  position:relative; overflow:hidden;
+}
+.home-hero-orb-1 {
+  position:absolute; width:700px; height:700px;
+  background:radial-gradient(circle, rgba(249,115,22,.12) 0%, transparent 65%);
+  top:-200px; right:-150px; border-radius:50%; pointer-events:none;
+}
+.home-hero-orb-2 {
+  position:absolute; width:400px; height:400px;
+  background:radial-gradient(circle, rgba(251,191,36,.06) 0%, transparent 70%);
+  bottom:-100px; left:20%; border-radius:50%; pointer-events:none;
+}
+.home-hero h1 {
+  font-size:clamp(52px,7vw,96px); font-weight:800;
+  letter-spacing:-3.5px; max-width:1000px; line-height:.98;
+  margin-top:28px;
+}
+.home-hero h1 .acc { color:var(--orange); }
+.home-hero h1 .lined {
+  position:relative; display:inline-block;
+}
+.home-hero h1 .lined::after {
+  content:''; position:absolute; left:0; bottom:-6px;
+  width:100%; height:3px; background:var(--gold); border-radius:2px;
+}
+.home-hero-sub {
+  font-size:18px; color:var(--muted); max-width:560px;
+  margin-top:32px; line-height:1.75; font-weight:300;
+}
+.home-hero-stats {
+  display:flex; gap:48px; margin-top:80px;
+  padding-top:48px; border-top:1px solid var(--border); flex-wrap:wrap;
+}
+
+/* Trust bar */
+.trust-bar {
+  background:var(--navy-mid); padding:24px 64px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:40px; flex-wrap:wrap;
+}
+.trust-label { font-size:12px; color:var(--muted); font-weight:500; letter-spacing:.5px; white-space:nowrap; }
+.trust-items { display:flex; gap:32px; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted-lt); }
+.trust-star { color:var(--gold); font-size:12px; }
+.trust-divider { width:1px; height:32px; background:var(--border); }
+
+/* Intro section */
+.home-intro {
+  padding:100px 64px; display:grid;
+  grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+}
+.intro-visual {
+  position:relative; display:grid;
+  grid-template-columns:1fr 1fr; gap:16px;
+}
+.intro-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:12px; padding:24px; transition:border-color .25s;
+}
+.intro-card:hover { border-color:var(--orange-bdr); }
+.intro-card.tall { grid-row:span 2; display:flex; flex-direction:column; justify-content:space-between; }
+.intro-card-icon { font-size:24px; margin-bottom:12px; }
+.intro-card-label { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; letter-spacing:-.3px; }
+.intro-card-val { font-size:28px; font-weight:800; font-family:'Syne',sans-serif; color:var(--orange); letter-spacing:-1px; margin-top:8px; }
+.intro-card-sub { font-size:12px; color:var(--muted); margin-top:4px; }
+
+/* Why section */
+.home-why { padding:100px 64px; background:var(--navy-mid); }
+.why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:60px; }
+.why-card {
+  background:var(--navy-light); padding:40px 36px;
+  transition:background .25s; position:relative; overflow:hidden;
+}
+.why-card::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:100%; height:2px; background:var(--orange);
+  transform:scaleX(0); transform-origin:left; transition:transform .3s;
+}
+.why-card:hover { background:var(--navy-card); }
+.why-card:hover::after { transform:scaleX(1); }
+.why-icon { font-size:28px; margin-bottom:20px; }
+.why-title { font-size:19px; font-weight:700; letter-spacing:-.4px; margin-bottom:10px; }
+.why-body { font-size:14px; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* Services preview */
+.home-services-prev { padding:100px 64px; }
+.services-prev-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:60px; }
+.svc-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:12px; padding:36px; transition:all .25s;
+  cursor:pointer; position:relative; overflow:hidden;
+}
+.svc-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:3px; height:100%; background:var(--orange);
+  transform:scaleY(0); transform-origin:top; transition:transform .3s;
+}
+.svc-card:hover { border-color:var(--orange-bdr); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.4); }
+.svc-card:hover::before { transform:scaleY(1); }
+.svc-num { font-size:11px; color:var(--orange); font-weight:700; letter-spacing:2px; margin-bottom:20px; }
+.svc-title { font-size:19px; font-weight:700; letter-spacing:-.4px; margin-bottom:10px; }
+.svc-body { font-size:14px; color:var(--muted); line-height:1.65; font-weight:300; }
+.svc-link { display:inline-flex; align-items:center; gap:6px; margin-top:20px; font-size:13px; color:var(--orange); font-weight:500; transition:gap .2s; }
+.svc-card:hover .svc-link { gap:10px; }
+
+/* Founder snippet */
+.home-founder { padding:100px 64px; background:var(--navy-mid); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.founder-img-wrap {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:16px; overflow:hidden; aspect-ratio:4/5;
+  display:flex; align-items:flex-end; position:relative;
+}
+.founder-img-bg { position:absolute; inset:0; background:linear-gradient(135deg,#1a2740 0%,#0e1420 100%); }
+.founder-monogram {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-60%);
+  font-family:'Syne',sans-serif; font-size:100px; font-weight:800;
+  color:rgba(249,115,22,.1); letter-spacing:-4px; user-select:none;
+  line-height:1;
+}
+.founder-degree-badge {
+  position:absolute; top:20px; right:20px; z-index:2;
+  background:rgba(8,12,22,.9); border:1px solid var(--border);
+  border-radius:10px; padding:12px 16px; text-align:center;
+}
+.founder-degree-badge strong { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; display:block; }
+.founder-degree-badge small { font-size:10px; color:var(--gold); display:block; margin-top:2px; }
+.founder-overlay {
+  position:relative; z-index:2; padding:28px; width:100%;
+  background:linear-gradient(0deg,rgba(8,12,22,.96) 0%,transparent 100%);
+}
+.founder-overlay strong { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; display:block; }
+.founder-overlay span { font-size:13px; color:var(--orange); margin-top:4px; display:block; }
+
+/* CTA Band */
+.cta-band {
+  background:var(--orange); padding:80px 64px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:32px; position:relative; overflow:hidden;
+}
+.cta-band::before {
+  content:''; position:absolute; right:-80px; top:-80px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(255,255,255,.08); pointer-events:none;
+}
+.cta-band h2 {
+  font-size:clamp(26px,3.5vw,46px); font-weight:800;
+  letter-spacing:-1.5px; color:var(--white); max-width:560px; line-height:1.1;
+}
+.cta-band h2 span { color:rgba(255,255,255,.5); }
+.btn-white {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--white); color:var(--navy);
+  padding:14px 32px; border-radius:8px; font-size:15px;
+  font-weight:600; font-family:'DM Sans',sans-serif;
+  transition:all .2s; white-space:nowrap; cursor:pointer;
+}
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.25); }
+
+/* ═══════════════════════════════════════════
+   PAGE: SERVICES
+═══════════════════════════════════════════ */
+#page-services {}
+.services-full-intro {
+  padding:100px 64px; display:grid;
+  grid-template-columns:1fr 1fr; gap:80px; align-items:start;
+  border-bottom:1px solid var(--border);
+}
+.services-intro-right { padding-top:20px; }
+.services-intro-right p { font-size:16px; color:var(--muted); line-height:1.8; font-weight:300; margin-bottom:20px; }
+
+/* Service tiers */
+.service-tier {
+  border-bottom:1px solid var(--border);
+  padding:80px 64px;
+}
+.service-tier:nth-child(even) { background:var(--navy-mid); }
+.tier-header { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; margin-bottom:60px; }
+.tier-num { font-size:72px; font-weight:800; font-family:'Syne',sans-serif; color:rgba(249,115,22,.12); letter-spacing:-3px; line-height:1; }
+.tier-meta {}
+.tier-tag { display:inline-block; background:var(--orange-bg); border:1px solid var(--orange-bdr); color:var(--orange); padding:4px 12px; border-radius:4px; font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+.tier-title { font-size:clamp(24px,2.8vw,38px); font-weight:800; letter-spacing:-1.2px; margin-bottom:14px; }
+.tier-desc { font-size:15px; color:var(--muted); line-height:1.75; font-weight:300; max-width:480px; }
+.tier-body { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+
+/* Packages within a tier */
+.packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.pkg-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:14px; padding:32px; position:relative;
+  transition:all .25s; display:flex; flex-direction:column;
+}
+.pkg-card.featured {
+  border-color:var(--orange); background:linear-gradient(135deg,#1e2d45 0%,var(--navy-card) 100%);
+}
+.pkg-badge {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:var(--orange); color:var(--white); padding:4px 14px;
+  border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.5px;
+  white-space:nowrap;
+}
+.pkg-name { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; letter-spacing:-.3px; margin-bottom:6px; }
+.pkg-tagline { font-size:13px; color:var(--muted); font-weight:300; margin-bottom:20px; }
+.pkg-price { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; letter-spacing:-1px; color:var(--orange); }
+.pkg-price sub { font-size:13px; color:var(--muted); font-weight:300; font-family:'DM Sans',sans-serif; vertical-align:middle; letter-spacing:0; }
+.pkg-divider { width:100%; height:1px; background:var(--border); margin:20px 0; }
+.pkg-features { flex:1; }
+.pkg-feature {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:13px; color:var(--muted-lt); line-height:1.5;
+  margin-bottom:10px; font-weight:300;
+}
+.pkg-check { color:var(--orange); font-size:12px; margin-top:2px; flex-shrink:0; }
+.pkg-cta {
+  margin-top:24px; display:block; text-align:center;
+  border:1px solid var(--border-md); color:var(--muted-lt);
+  padding:11px; border-radius:7px; font-size:14px; font-weight:500;
+  font-family:'DM Sans',sans-serif; cursor:pointer;
+  transition:all .2s;
+}
+.pkg-card.featured .pkg-cta { background:var(--orange); border-color:var(--orange); color:var(--white); }
+.pkg-cta:hover { border-color:var(--orange); color:var(--white); }
+
+/* deliverables list */
+.deliverables { }
+.deliverables h4 { font-size:14px; font-weight:600; letter-spacing:.3px; margin-bottom:16px; color:var(--muted-lt); }
+.del-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:14px; color:var(--muted); margin-bottom:10px; font-weight:300;
+}
+.del-dot { width:6px; height:6px; background:var(--orange); border-radius:50%; flex-shrink:0; }
+
+/* Retainer standalone */
+.retainer-card {
+  background:linear-gradient(135deg,#1a2740 0%,var(--navy-light) 100%);
+  border:1px solid var(--border-md); border-radius:16px; padding:48px;
+  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+}
+.retainer-card .retainer-left h3 { font-size:clamp(22px,2.5vw,32px); font-weight:800; letter-spacing:-1px; margin-bottom:16px; }
+.retainer-card .retainer-left p { font-size:15px; color:var(--muted); line-height:1.75; font-weight:300; }
+.retainer-perks { display:flex; flex-direction:column; gap:14px; }
+.retainer-perk {
+  display:flex; align-items:center; gap:14px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:14px 18px; transition:border-color .2s;
+}
+.retainer-perk:hover { border-color:var(--orange-bdr); }
+.retainer-perk-icon { font-size:20px; }
+.retainer-perk-text { font-size:14px; font-weight:400; }
+.retainer-perk-text small { display:block; font-size:12px; color:var(--muted); font-weight:300; margin-top:2px; }
+
+/* ═══════════════════════════════════════════
+   PAGE: ABOUT
+═══════════════════════════════════════════ */
+#page-about {}
+.about-story { padding:100px 64px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; border-bottom:1px solid var(--border); }
+.about-story-content p { font-size:16px; color:var(--muted); line-height:1.85; font-weight:300; margin-bottom:20px; }
+.about-story-content p:last-child { margin:0; }
+.about-story-visual { position:relative; }
+.about-profile-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:16px; overflow:hidden; aspect-ratio:3/4;
+  display:flex; align-items:flex-end; position:relative;
+}
+.about-profile-bg { position:absolute; inset:0; background:linear-gradient(145deg,#1e2d45,#0e1420); }
+.about-profile-mono {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-55%);
+  font-family:'Syne',sans-serif; font-size:110px; font-weight:800;
+  color:rgba(249,115,22,.1); letter-spacing:-4px; user-select:none; line-height:1;
+}
+.about-profile-info {
+  position:relative; z-index:2; padding:28px; width:100%;
+  background:linear-gradient(0deg,rgba(8,12,22,.96),transparent);
+}
+.about-profile-info strong { font-family:'Syne',sans-serif; font-size:22px; font-weight:700; display:block; letter-spacing:-.5px; }
+.about-profile-info em { font-style:normal; font-size:13px; color:var(--orange); display:block; margin-top:4px; }
+.about-degree-chip {
+  position:absolute; top:20px; right:20px; z-index:3;
+  background:rgba(8,12,22,.9); border:1px solid var(--border);
+  border-radius:10px; padding:12px 16px;
+}
+.about-degree-chip strong { font-size:12px; font-family:'Syne',sans-serif; font-weight:700; display:block; }
+.about-degree-chip em { font-style:normal; font-size:10px; color:var(--gold); display:block; margin-top:3px; }
+
+/* Timeline */
+.about-timeline { padding:100px 64px; background:var(--navy-mid); }
+.timeline { position:relative; margin-top:60px; }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--border); }
+.tl-item { display:grid; grid-template-columns:180px 1fr; gap:40px; padding-bottom:48px; position:relative; }
+.tl-item::before {
+  content:''; position:absolute; left:-4px; top:6px;
+  width:9px; height:9px; background:var(--orange); border-radius:50%;
+  box-shadow:0 0 0 3px rgba(249,115,22,.2);
+}
+.tl-year { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--orange); padding-top:2px; text-align:right; }
+.tl-content {}
+.tl-content h4 { font-size:17px; font-weight:700; letter-spacing:-.3px; margin-bottom:6px; }
+.tl-content p { font-size:14px; color:var(--muted); line-height:1.7; font-weight:300; }
+
+/* Values */
+.about-values { padding:100px 64px; }
+.values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:60px; }
+.value-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:12px; padding:32px; text-align:center; transition:all .25s;
+}
+.value-card:hover { border-color:var(--orange-bdr); transform:translateY(-4px); }
+.value-icon { font-size:32px; margin-bottom:16px; }
+.value-name { font-size:17px; font-weight:700; letter-spacing:-.3px; margin-bottom:8px; }
+.value-desc { font-size:13px; color:var(--muted); line-height:1.65; font-weight:300; }
+
+/* Credentials */
+.about-credentials { padding:100px 64px; background:var(--navy-mid); }
+.cred-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:60px; }
+.cred-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:12px; padding:32px; transition:all .25s;
+}
+.cred-card:hover { border-color:var(--orange-bdr); }
+.cred-icon { font-size:28px; margin-bottom:16px; }
+.cred-title { font-size:16px; font-weight:700; letter-spacing:-.3px; margin-bottom:6px; }
+.cred-sub { font-size:13px; color:var(--orange); margin-bottom:10px; }
+.cred-desc { font-size:13px; color:var(--muted); line-height:1.65; font-weight:300; }
+
+/* ═══════════════════════════════════════════
+   PAGE: CASE STUDIES
+═══════════════════════════════════════════ */
+#page-cases {}
+.cases-grid-section { padding:80px 64px; }
+.cases-filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px; }
+.filter-btn {
+  padding:8px 18px; border-radius:100px; font-size:13px;
+  cursor:pointer; transition:all .2s; border:1px solid var(--border); color:var(--muted);
+  font-family:'DM Sans',sans-serif; background:none;
+}
+.filter-btn.active, .filter-btn:hover { background:var(--orange-bg); border-color:var(--orange-bdr); color:var(--orange); }
+.cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.case-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:14px; overflow:hidden; transition:all .25s; cursor:pointer;
+}
+.case-card:hover { border-color:var(--orange-bdr); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.4); }
+.case-img {
+  aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+  font-size:36px; position:relative; overflow:hidden;
+}
+.case-amala { background:linear-gradient(135deg,#2d1a0a,#1a0f05); }
+.case-petworld { background:linear-gradient(135deg,#0a2010,#051208); }
+.case-ekoss { background:linear-gradient(135deg,#0a1020,#060d1a); }
+.case-img-label {
+  font-family:'Syne',sans-serif; font-size:28px; font-weight:800;
+  color:rgba(255,255,255,.06); position:absolute; bottom:12px; right:16px;
+  letter-spacing:-1px;
+}
+.case-body { padding:28px; }
+.case-industry { font-size:11px; color:var(--orange); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.case-title { font-size:18px; font-weight:700; letter-spacing:-.4px; margin-bottom:10px; }
+.case-desc { font-size:13px; color:var(--muted); line-height:1.65; font-weight:300; margin-bottom:20px; }
+.case-metrics { display:flex; gap:20px; flex-wrap:wrap; }
+.case-metric {}
+.case-metric-n { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; letter-spacing:-1px; color:var(--orange); }
+.case-metric-l { font-size:11px; color:var(--muted); font-weight:300; margin-top:2px; }
+.case-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+
+/* ═══════════════════════════════════════════
+   PAGE: INSIGHTS
+═══════════════════════════════════════════ */
+#page-insights {}
+.insights-section { padding:80px 64px; }
+.insights-featured { display:grid; grid-template-columns:3fr 2fr; gap:24px; margin-bottom:24px; }
+.insight-card {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:14px; overflow:hidden; transition:all .25s; cursor:pointer;
+}
+.insight-card:hover { border-color:var(--orange-bdr); transform:translateY(-3px); }
+.insight-img {
+  aspect-ratio:16/7; display:flex; align-items:center; justify-content:center;
+  font-size:32px; position:relative; overflow:hidden;
+}
+.insight-img-1 { background:linear-gradient(135deg,#1a200f,#0f1508); }
+.insight-img-2 { background:linear-gradient(135deg,#1a100f,#100808); }
+.insight-img-3 { background:linear-gradient(135deg,#0f1a20,#080f14); }
+.insight-img-4 { background:linear-gradient(135deg,#1a1520,#100c14); }
+.insight-img-5 { background:linear-gradient(135deg,#1a1a0f,#100f08); }
+.insight-img-label {
+  position:absolute; bottom:10px; right:14px;
+  font-family:'Syne',sans-serif; font-size:22px; font-weight:800;
+  color:rgba(255,255,255,.06); letter-spacing:-1px;
+}
+.insight-body { padding:24px; }
+.insight-cat { font-size:11px; color:var(--orange); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.insight-title { font-size:17px; font-weight:700; letter-spacing:-.3px; margin-bottom:8px; line-height:1.3; }
+.insight-title.large { font-size:22px; letter-spacing:-.5px; }
+.insight-excerpt { font-size:13px; color:var(--muted); line-height:1.65; font-weight:300; }
+.insight-meta { display:flex; gap:16px; align-items:center; margin-top:16px; font-size:12px; color:var(--muted); }
+.insight-meta span::before { content:'·'; margin-right:8px; }
+.insight-meta span:first-child::before { content:''; margin:0; }
+.insights-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+/* Newsletter */
+.newsletter-section {
+  padding:80px 64px; background:var(--navy-mid);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.newsletter-inner {
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:16px; padding:56px 64px;
+  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+}
+.newsletter-inner h2 { font-size:clamp(24px,2.5vw,36px); font-weight:800; letter-spacing:-1.2px; margin-bottom:14px; }
+.newsletter-inner p { font-size:15px; color:var(--muted); line-height:1.7; font-weight:300; }
+.newsletter-form { display:flex; gap:12px; margin-top:8px; }
+.newsletter-input {
+  flex:1; background:var(--navy-light); border:1px solid var(--border-md);
+  border-radius:8px; padding:13px 18px; color:var(--white);
+  font-size:14px; font-family:'DM Sans',sans-serif; outline:none;
+  transition:border-color .2s;
+}
+.newsletter-input::placeholder { color:var(--muted); }
+.newsletter-input:focus { border-color:var(--orange-bdr); }
+
+/* ═══════════════════════════════════════════
+   PAGE: CONTACT
+═══════════════════════════════════════════ */
+#page-contact {}
+.contact-grid { padding:80px 64px; display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.contact-info h3 { font-size:clamp(22px,2.5vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:20px; }
+.contact-info > p { font-size:15px; color:var(--muted); line-height:1.8; font-weight:300; margin-bottom:40px; }
+.contact-channels { display:flex; flex-direction:column; gap:14px; margin-bottom:40px; }
+.contact-ch {
+  display:flex; align-items:center; gap:16px;
+  background:var(--navy-card); border:1px solid var(--border);
+  border-radius:10px; padding:16px 20px; transition:border-color .2s;
+}
+.contact-ch:hover { border-color:var(--orange-bdr); }
+.contact-ch-icon { font-size:20px; flex-shrink:0; }
+.contact-ch-label { font-size:12px; color:var(--muted); font-weight:300; }
+.contact-ch-val { font-size:14px; font-weight:500; margin-top:2px; }
+
+/* Form */
+.contact-form-wrap {}
+.form-group { margin-bottom:20px; }
+.form-label { display:block; font-size:13px; font-weight:500; color:var(--muted-lt); margin-bottom:8px; letter-spacing:.2px; }
+.form-input, .form-select, .form-textarea {
+  width:100%; background:var(--navy-light); border:1px solid var(--border-md);
+  border-radius:8px; padding:13px 18px; color:var(--white);
+  font-size:14px; font-family:'DM Sans',sans-serif; outline:none;
+  transition:border-color .2s;
+}
+.form-input::placeholder, .form-textarea::placeholder { color:var(--muted); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--orange-bdr); }
+.form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M6 8L0 0h12z' fill='%2394A3B8'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; }
+.form-select option { background:var(--navy-mid); }
+.form-textarea { resize:vertical; min-height:130px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-submit { width:100%; padding:15px; font-size:15px; font-weight:600; }
+
+/* FAQ */
+.faq-section { padding:80px 64px; background:var(--navy-mid); }
+.faq-list { margin-top:48px; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:24px 0; cursor:pointer; font-size:16px; font-weight:500;
+  transition:color .2s;
+}
+.faq-q:hover { color:var(--orange); }
+.faq-q-icon { font-size:20px; color:var(--muted); transition:transform .3s; flex-shrink:0; }
+.faq-item.open .faq-q-icon { transform:rotate(45deg); color:var(--orange); }
+.faq-a { font-size:14px; color:var(--muted); line-height:1.75; font-weight:300; padding-bottom:24px; display:none; max-width:680px; }
+.faq-item.open .faq-a { display:block; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1024px) {
+  nav { padding:16px 28px; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:flex; }
+  .home-hero, .page-hero, section, .service-tier, .contact-grid, .cases-grid-section, .insights-section, .newsletter-section, .faq-section, .about-story, .about-timeline, .about-values, .about-credentials { padding-left:28px; padding-right:28px; }
+  .cta-band, footer { padding-left:28px; padding-right:28px; }
+  .trust-bar { padding:20px 28px; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:36px; }
+  .home-intro, .services-full-intro, .home-founder { grid-template-columns:1fr; }
+  .why-grid, .services-prev-grid, .cred-grid { grid-template-columns:1fr 1fr; }
+  .packages-grid, .cases-grid, .insights-grid { grid-template-columns:1fr 1fr; }
+  .insights-featured { grid-template-columns:1fr; }
+  .values-grid { grid-template-columns:1fr 1fr; }
+  .tier-header { grid-template-columns:1fr; gap:20px; }
+  .tier-body { grid-template-columns:1fr; }
+  .retainer-card { grid-template-columns:1fr; }
+  .about-story { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+  .newsletter-inner { grid-template-columns:1fr; gap:32px; padding:36px; }
+  .newsletter-form { flex-direction:column; }
+  .form-row { grid-template-columns:1fr; }
+  .tl-item { grid-template-columns:100px 1fr; gap:20px; }
+}
+@media(max-width:600px) {
+  .why-grid, .packages-grid, .cases-grid, .insights-grid, .cred-grid, .values-grid, .services-prev-grid { grid-template-columns:1fr; }
+  .home-hero-stats, .stat-grid { gap:28px; }
+  .home-hero h1 { letter-spacing:-2px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="showPage('home')">Brands<span>Digitals</span></div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="showPage('services')" data-page="services">Services</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About</a></li>
+    <li><a onclick="showPage('cases')" data-page="cases">Case Studies</a></li>
+    <li><a onclick="showPage('insights')" data-page="insights">Insights</a></li>
+  </ul>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <div class="nav-cta" onclick="showPage('contact')">Book a Strategy Call →</div>
+    <div class="nav-hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');toggleMenu()">Home</a>
+  <a onclick="showPage('services');toggleMenu()">Services</a>
+  <a onclick="showPage('about');toggleMenu()">About</a>
+  <a onclick="showPage('cases');toggleMenu()">Case Studies</a>
+  <a onclick="showPage('insights');toggleMenu()">Insights</a>
+  <a onclick="showPage('contact');toggleMenu()" class="mob-cta">Book a Strategy Call →</a>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <!-- Hero -->
+  <section class="home-hero">
+    <div class="home-hero-orb-1"></div>
+    <div class="home-hero-orb-2"></div>
+    <div class="eyebrow fade-up">Digital Transformation Agency · Lagos, Nigeria</div>
+    <h1 class="fade-up delay-1">
+      We <span class="acc">transform</span><br>
+      how startups<br>
+      <span class="lined">compete.</span>
+    </h1>
+    <p class="home-hero-sub fade-up delay-2">
+      From brand strategy to marketing infrastructure — we partner with funded startups and scaleups across Africa to build digital businesses that win markets, not just impressions.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <div class="btn-primary" onclick="showPage('contact')">Start Your Transformation →</div>
+      <div class="btn-outline" onclick="showPage('services')">See What We Do</div>
+    </div>
+    <div class="home-hero-stats fade-up delay-4">
+      <div class="stat"><div class="stat-n">7<span>+</span></div><div class="stat-l">Years in Business</div></div>
+      <div class="stat"><div class="stat-n">100<span>+</span></div><div class="stat-l">Clients Transformed</div></div>
+      <div class="stat"><div class="stat-n">4.8<span>★</span></div><div class="stat-l">Average Client Rating</div></div>
+      <div class="stat"><div class="stat-n">NG<span>→🌍</span></div><div class="stat-l">Lagos · Ibadan · Global</div></div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <div class="trust-bar">
+    <span class="trust-label">Trusted & rated on</span>
+    <div class="trust-items">
+      <div class="trust-item"><span class="trust-star">★★★★★</span> Google Reviews</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-star">★★★★★</span> Clutch.co</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-star">★★★★★</span> Trustpilot</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-star">★★★★☆</span> LinkedIn</div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-inner">
+      <div class="m-item"><span class="m-dot"></span>Brand Strategy</div>
+      <div class="m-item"><span class="m-dot"></span>Digital Transformation</div>
+      <div class="m-item"><span class="m-dot"></span>Growth Marketing</div>
+      <div class="m-item"><span class="m-dot"></span>SEO & Content Systems</div>
+      <div class="m-item"><span class="m-dot"></span>Marketing Automation</div>
+      <div class="m-item"><span class="m-dot"></span>CRM Infrastructure</div>
+      <div class="m-item"><span class="m-dot"></span>Paid Advertising</div>
+      <div class="m-item"><span class="m-dot"></span>Website Design</div>
+      <div class="m-item"><span class="m-dot"></span>Startup Positioning</div>
+      <div class="m-item"><span class="m-dot"></span>Performance Analytics</div>
+      <div class="m-item"><span class="m-dot"></span>Brand Strategy</div>
+      <div class="m-item"><span class="m-dot"></span>Digital Transformation</div>
+      <div class="m-item"><span class="m-dot"></span>Growth Marketing</div>
+      <div class="m-item"><span class="m-dot"></span>SEO & Content Systems</div>
+      <div class="m-item"><span class="m-dot"></span>Marketing Automation</div>
+      <div class="m-item"><span class="m-dot"></span>CRM Infrastructure</div>
+      <div class="m-item"><span class="m-dot"></span>Paid Advertising</div>
+      <div class="m-item"><span class="m-dot"></span>Website Design</div>
+      <div class="m-item"><span class="m-dot"></span>Startup Positioning</div>
+      <div class="m-item"><span class="m-dot"></span>Performance Analytics</div>
+    </div>
+  </div>
+
+  <!-- Intro visual -->
+  <div class="home-intro">
+    <div class="intro-visual">
+      <div class="intro-card tall">
+        <div>
+          <div class="intro-card-icon">🏆</div>
+          <div class="intro-card-label">Strategy-First Agency</div>
+        </div>
+        <div>
+          <div class="intro-card-val">7+</div>
+          <div class="intro-card-sub">Years transforming businesses</div>
+        </div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-icon">🎓</div>
+        <div class="intro-card-label">MSc Qualified</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:300;">Rome Business School</div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-icon">🌍</div>
+        <div class="intro-card-label">African-Born, Global-Ready</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:300;">Built for African markets</div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-val">₦+</div>
+        <div class="intro-card-label">Revenue Generated</div>
+        <div class="intro-card-sub">For our clients, collectively</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Why Brands Digitals</div>
+      <h2 class="section-h" style="margin-bottom:24px;">Not just marketing. <span class="dim">Business transformation.</span></h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:20px;">Most agencies run your ads and call it a day. We look at your entire digital ecosystem — your brand positioning, your website, your content engine, your CRM, your paid channels — and we connect them into a system that drives growth.</p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:36px;">We work exclusively with funded startups and scaleups that are serious about winning their market. No hobbyists. No side projects. Just businesses ready to transform.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <div class="btn-primary" onclick="showPage('services')">Explore Services →</div>
+        <div class="btn-outline" onclick="showPage('about')">Meet the Team</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why us -->
+  <div class="home-why">
+    <div class="section-label">What Makes Us Different</div>
+    <h2 class="section-h" style="max-width:520px;">The agency that <span class="dim">thinks</span> like a consultancy.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧠</div>
+        <div class="why-title">Strategy Before Execution</div>
+        <p class="why-body">We don't run ads on day one. Every engagement starts with a full digital audit and transformation strategy — so every naira spent points in the right direction.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Outcomes, Not Outputs</div>
+        <p class="why-body">We don't celebrate follower counts or impressions. Our KPIs are revenue, leads, CAC, and LTV — the numbers that actually matter to your business.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <div class="why-title">Built for African Markets</div>
+        <p class="why-body">We understand the Nigerian consumer, the African digital landscape, and the unique challenges of scaling a business here. No copy-paste Western playbooks.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎓</div>
+        <div class="why-title">Academic + Practitioner Edge</div>
+        <p class="why-body">Our founder holds an MSc in Digital Marketing & Business Transformation (Rome Business School). We combine academic rigour with real-world hustle.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚙️</div>
+        <div class="why-title">We Build Systems, Not Campaigns</div>
+        <p class="why-body">Campaigns end. Systems compound. We set up your CRM, automations, analytics, and content infrastructure so growth doesn't stop when a campaign does.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <div class="why-title">Partner-Level Engagement</div>
+        <p class="why-body">We don't work with 30 clients at once. We take on a selective number of engagements so every client gets senior-level attention, every week.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Preview -->
+  <div class="home-services-prev">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="section-label">Our Services</div>
+        <h2 class="section-h">Transformation, <span class="dim">not just marketing.</span></h2>
+      </div>
+      <div class="btn-outline" onclick="showPage('services')">View All Services →</div>
+    </div>
+    <div class="services-prev-grid">
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">01</div>
+        <div class="svc-title">Digital Audit & Strategy</div>
+        <p class="svc-body">A full diagnostic of your digital presence, competitive landscape, and growth gaps — with a clear transformation blueprint as output.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">02</div>
+        <div class="svc-title">Brand & Digital Presence</div>
+        <p class="svc-body">Positioning, messaging, visual identity, website, and SEO infrastructure — built to attract and convert your ideal customers.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">03</div>
+        <div class="svc-title">Growth & Demand Engine</div>
+        <p class="svc-body">Paid media, email marketing, content systems, and conversion funnels designed to generate predictable, scalable revenue growth.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">04</div>
+        <div class="svc-title">Marketing Operations</div>
+        <p class="svc-body">CRM setup, automation workflows, analytics dashboards, and reporting infrastructure that makes growth measurable and repeatable.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">05</div>
+        <div class="svc-title">Startup Launch Package</div>
+        <p class="svc-body">Purpose-built for funded startups going to market — brand, website, digital channels, and a 90-day growth launch plan, delivered fast.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+      <div class="svc-card" onclick="showPage('services')">
+        <div class="svc-num">06</div>
+        <div class="svc-title">Transformation Retainer</div>
+        <p class="svc-body">An ongoing strategic partnership where we function as your embedded digital transformation team — month after month.</p>
+        <div class="svc-link">Learn more →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Founder snippet -->
+  <div class="home-founder">
+    <div class="founder-img-wrap">
+      <div class="founder-img-bg"></div>
+      <div class="founder-monogram">ADO</div>
+      <div class="founder-degree-badge">
+        <strong>MSc Digital Marketing</strong>
+        <small>& Business Transformation</small>
+        <small style="color:var(--muted);margin-top:2px;">Rome Business School</small>
+      </div>
+      <div class="founder-overlay">
+        <strong>Aanu Damilare Oke</strong>
+        <span>Founder & Digital Transformation Strategist</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Meet the Founder</div>
+      <h2 class="section-h" style="margin-bottom:24px;">Strategy-first. <span class="acc">Results-obsessed.</span> <span class="dim">Built for Africa.</span></h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:16px;">I'm Mercien — a Digital Transformation Strategist with an MSc in Digital Marketing & Business Transformation from Rome Business School, and 7+ years of hands-on experience building digital growth engines for businesses across Nigeria and beyond.</p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:32px;">As the founder of Brands Digitals Agency and Head of Tech & Marketing at FOC Inc, I've sat on both sides of the table — executing strategy as a practitioner and leading transformation as a consultant. That dual lens is what makes our work different.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+        <span class="tag">MSc · Rome Business School</span>
+        <span class="tag">7+ Years Experience</span>
+        <span class="tag">Fintech · F&B · Startups</span>
+        <span class="tag">Head of Tech & Marketing · FOC Inc</span>
+      </div>
+      <div class="btn-outline" onclick="showPage('about')">Full Story →</div>
+    </div>
+  </div>
+
+  <!-- Case Studies Teaser -->
+  <div style="padding:100px 64px;background:var(--navy-mid);border-top:1px solid var(--border);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="section-label">Recent Work</div>
+        <h2 class="section-h">Work that <span class="dim">speaks for itself.</span></h2>
+      </div>
+      <div class="btn-outline" onclick="showPage('cases')">All Case Studies →</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="cases-home-grid">
+      <div class="case-card" onclick="showPage('cases')">
+        <div class="case-img case-amala"><span>🍲</span><div class="case-img-label">AMALA SKY</div></div>
+        <div class="case-body">
+          <div class="case-industry">Restaurant · F&B</div>
+          <div class="case-title">Amala Sky — Lagos & Abuja Growth Strategy</div>
+          <p class="case-desc">Full digital transformation for a premium Nigerian restaurant brand spanning two cities — from local SEO to social media overhaul.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">3×</div><div class="case-metric-l">Online Visibility</div></div>
+            <div class="case-metric"><div class="case-metric-n">+47%</div><div class="case-metric-l">Reservation Rate</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card" onclick="showPage('cases')">
+        <div class="case-img case-petworld"><span>🐾</span><div class="case-img-label">PETWORLD</div></div>
+        <div class="case-body">
+          <div class="case-industry">Pet Care · Agro Services</div>
+          <div class="case-title">PetWorld Agrofarm — Digital Strategy & Positioning</div>
+          <p class="case-desc">End-to-end digital marketing strategy and brand repositioning for an Ibadan-based pet care and agro services business.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">+120%</div><div class="case-metric-l">Web Traffic</div></div>
+            <div class="case-metric"><div class="case-metric-n">5★</div><div class="case-metric-l">Brand Perception</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card" onclick="showPage('cases')">
+        <div class="case-img case-ekoss"><span>💡</span><div class="case-img-label">EKOSS360</div></div>
+        <div class="case-body">
+          <div class="case-industry">Co-working · Innovation</div>
+          <div class="case-title">Ekoss360 Innovation Hub — Launch Strategy</div>
+          <p class="case-desc">Competitive analysis, audience segmentation, and full 90-day digital go-to-market roadmap for a co-working space in Ibadan.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">90-Day</div><div class="case-metric-l">GTM Roadmap</div></div>
+            <div class="case-metric"><div class="case-metric-n">6</div><div class="case-metric-l">Strategy Pillars</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <div class="cta-band">
+    <h2>Ready to transform <span>your business?</span><br>Let's build something great.</h2>
+    <div class="btn-white" onclick="showPage('contact')">Book a Free Strategy Call →</div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Brands<span>Digitals</span></div>
+        <p class="footer-tagline">Digital transformation for African businesses ready to scale. Strategy · Technology · Growth.</p>
+        <div class="footer-social">
+          <div class="social-btn">in</div>
+          <div class="social-btn">ig</div>
+          <div class="social-btn">tw</div>
+          <div class="social-btn">yt</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a onclick="showPage('services')">Digital Audit & Strategy</a></li>
+          <li><a onclick="showPage('services')">Brand & Digital Presence</a></li>
+          <li><a onclick="showPage('services')">Growth & Demand Engine</a></li>
+          <li><a onclick="showPage('services')">Marketing Operations</a></li>
+          <li><a onclick="showPage('services')">Transformation Retainer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a onclick="showPage('about')">About Mercien</a></li>
+          <li><a onclick="showPage('cases')">Case Studies</a></li>
+          <li><a onclick="showPage('insights')">Insights</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#">hello@brandsdigitals.com.ng</a></li>
+          <li><a href="#">Lagos, Nigeria</a></li>
+          <li><a href="#">+234 — — — — — —</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Brands Digitals Agency. Founded by <a href="#">Mercien (Aanu Damilare Oke)</a>.</p>
+      <div class="footer-badge">🎓 MSc Digital Marketing — Rome Business School</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: SERVICES
+══════════════════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="eyebrow">Our Services</div>
+    <h1>Transformation packages <span style="color:var(--orange);">built for scale.</span></h1>
+    <p>We don't sell one-size-fits-all tactics. Every service tier is architected around your stage, your goals, and your growth horizon.</p>
+    <div class="hero-actions">
+      <div class="btn-primary" onclick="showPage('contact')">Get a Custom Quote →</div>
+      <div class="btn-outline" onclick="showPage('cases')">See Client Results</div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="services-full-intro">
+    <div>
+      <div class="section-label">How We're Different</div>
+      <h2 class="section-h">Six tiers.<br><span class="dim">One transformation.</span></h2>
+    </div>
+    <div class="services-intro-right">
+      <p>Each service tier can stand alone or stack together. Most clients start with a Digital Audit, then move into execution. Funded startups often go straight to our Startup Launch Package. Growth-stage companies typically graduate into a Transformation Retainer.</p>
+      <p>All engagements are strategy-led, outcome-focused, and delivered by our senior team — never outsourced to juniors or white-label providers.</p>
+      <div class="btn-outline" onclick="showPage('contact')">Talk to us about what you need →</div>
+    </div>
+  </div>
+
+  <!-- TIER 1: Audit & Strategy -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div>
+        <div class="tier-num">01</div>
+      </div>
+      <div class="tier-meta">
+        <div class="tier-tag">Foundation</div>
+        <h2 class="tier-title">Digital Audit & Strategy</h2>
+        <p class="tier-desc">Before we execute anything, we diagnose everything. This is a full-spectrum assessment of your brand, digital channels, competitive landscape, and growth gaps — delivered as a clear, actionable transformation blueprint.</p>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div>
+        <div class="deliverables">
+          <h4>What's Included</h4>
+          <div class="del-item"><span class="del-dot"></span>Full digital presence audit (website, SEO, social, ads)</div>
+          <div class="del-item"><span class="del-dot"></span>Competitor landscape analysis (5–10 direct competitors)</div>
+          <div class="del-item"><span class="del-dot"></span>Audience persona development (3–4 detailed profiles)</div>
+          <div class="del-item"><span class="del-dot"></span>Brand positioning gap analysis</div>
+          <div class="del-item"><span class="del-dot"></span>Channel performance scoring & recommendation</div>
+          <div class="del-item"><span class="del-dot"></span>Transformation roadmap (90-day, 6-month, 12-month)</div>
+          <div class="del-item"><span class="del-dot"></span>Delivered as a 40–60 page strategy document + presentation</div>
+        </div>
+      </div>
+      <div>
+        <div class="packages-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="pkg-card">
+            <div class="pkg-name">Starter Audit</div>
+            <div class="pkg-tagline">For early-stage startups</div>
+            <div class="pkg-price">₦150k <sub>one-time</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>3-channel digital audit</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>5-competitor analysis</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>2 audience personas</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>30-page strategy doc</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>1-hour debrief call</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-badge">Most Popular</div>
+            <div class="pkg-name">Full Transformation Audit</div>
+            <div class="pkg-tagline">For funded startups & scaleups</div>
+            <div class="pkg-price">₦350k <sub>one-time</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full digital ecosystem audit</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>10-competitor deep-dive</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>4 detailed audience personas</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>60-page strategy + roadmap</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>12-month transformation plan</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>2-hour strategy presentation</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Priority onboarding to execution</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 2: Brand & Presence -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div><div class="tier-num">02</div></div>
+      <div class="tier-meta">
+        <div class="tier-tag">Identity & Web</div>
+        <h2 class="tier-title">Brand & Digital Presence</h2>
+        <p class="tier-desc">Your brand is not your logo. It's the entire experience people have when they encounter your business. We rebuild that experience from the ground up — positioning, messaging, visual identity, website, and SEO foundation.</p>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div>
+        <div class="deliverables">
+          <h4>What's Included</h4>
+          <div class="del-item"><span class="del-dot"></span>Brand positioning & messaging framework</div>
+          <div class="del-item"><span class="del-dot"></span>Visual identity system (logo, colours, typography, brand guide)</div>
+          <div class="del-item"><span class="del-dot"></span>Website design & development (up to 10 pages)</div>
+          <div class="del-item"><span class="del-dot"></span>On-page SEO setup & technical optimisation</div>
+          <div class="del-item"><span class="del-dot"></span>Google Business Profile setup & optimisation</div>
+          <div class="del-item"><span class="del-dot"></span>Social media profile kit (bio, cover, highlight templates)</div>
+          <div class="del-item"><span class="del-dot"></span>Brand voice & content guidelines document</div>
+        </div>
+      </div>
+      <div>
+        <div class="packages-grid" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="pkg-card">
+            <div class="pkg-name">Brand Starter</div>
+            <div class="pkg-tagline">Identity + 5-page website</div>
+            <div class="pkg-price">₦300k</div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Logo & brand colours</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>5-page WordPress site</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Basic SEO setup</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Social profile kit</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-badge">Recommended</div>
+            <div class="pkg-name">Brand Pro</div>
+            <div class="pkg-tagline">Full identity + 10-page site</div>
+            <div class="pkg-price">₦600k</div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full brand identity system</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>10-page website</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Positioning & messaging doc</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full SEO foundation</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Brand voice guidelines</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Google Business setup</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-name">Brand Enterprise</div>
+            <div class="pkg-tagline">Full transformation rebrand</div>
+            <div class="pkg-price">₦1.2M+</div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Everything in Brand Pro</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Custom-coded website</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Competitor positioning map</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>PR & media kit</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Launch strategy included</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Book a Call</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 3: Growth & Demand -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div><div class="tier-num">03</div></div>
+      <div class="tier-meta">
+        <div class="tier-tag">Acquisition & Revenue</div>
+        <h2 class="tier-title">Growth & Demand Engine</h2>
+        <p class="tier-desc">This is where strategy becomes money. We design and operate your full acquisition engine — paid media, organic content, email marketing, and conversion optimisation — built to generate measurable revenue growth.</p>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div>
+        <div class="deliverables">
+          <h4>What's Included</h4>
+          <div class="del-item"><span class="del-dot"></span>Paid media strategy & management (Meta, Google, TikTok)</div>
+          <div class="del-item"><span class="del-dot"></span>Content strategy & production (blog, video, social)</div>
+          <div class="del-item"><span class="del-dot"></span>Email marketing setup & campaign execution</div>
+          <div class="del-item"><span class="del-dot"></span>Lead generation funnel design & deployment</div>
+          <div class="del-item"><span class="del-dot"></span>Landing page creation & A/B testing</div>
+          <div class="del-item"><span class="del-dot"></span>SEO content strategy & execution</div>
+          <div class="del-item"><span class="del-dot"></span>Monthly performance reporting & optimisation</div>
+        </div>
+      </div>
+      <div>
+        <div class="packages-grid" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="pkg-card">
+            <div class="pkg-name">Growth Starter</div>
+            <div class="pkg-tagline">1 channel, 3 months minimum</div>
+            <div class="pkg-price">₦150k <sub>/mo</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>1 paid channel (Meta or Google)</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>4 content pieces/month</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Monthly report</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Ad spend not included</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-badge">Best ROI</div>
+            <div class="pkg-name">Growth Pro</div>
+            <div class="pkg-tagline">Multi-channel demand gen</div>
+            <div class="pkg-price">₦300k <sub>/mo</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>2 paid channels</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Email sequences (3/month)</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>8 content pieces/month</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Lead funnel setup</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Bi-weekly optimisation</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Monthly strategy call</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-name">Growth Enterprise</div>
+            <div class="pkg-tagline">Full demand gen ecosystem</div>
+            <div class="pkg-price">₦600k+ <sub>/mo</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>All paid channels</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full content production team</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Email + SMS automation</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>CRO & landing page testing</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Weekly reporting & calls</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Dedicated growth strategist</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Book a Call</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 4: Marketing Ops -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div><div class="tier-num">04</div></div>
+      <div class="tier-meta">
+        <div class="tier-tag">Infrastructure</div>
+        <h2 class="tier-title">Marketing Operations</h2>
+        <p class="tier-desc">Growth without infrastructure is luck. We build the systems that make your marketing measurable, repeatable, and scalable — CRM, automation, analytics, and reporting that gives you clarity on every naira spent.</p>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div>
+        <div class="deliverables">
+          <h4>What's Included</h4>
+          <div class="del-item"><span class="del-dot"></span>CRM setup & configuration (HubSpot, Zoho, or similar)</div>
+          <div class="del-item"><span class="del-dot"></span>Marketing automation workflows (lead nurture, onboarding)</div>
+          <div class="del-item"><span class="del-dot"></span>Analytics setup (GA4, Meta Pixel, Google Tag Manager)</div>
+          <div class="del-item"><span class="del-dot"></span>Custom reporting dashboard (weekly/monthly KPIs)</div>
+          <div class="del-item"><span class="del-dot"></span>Lead scoring model setup</div>
+          <div class="del-item"><span class="del-dot"></span>Sales & marketing alignment documentation</div>
+          <div class="del-item"><span class="del-dot"></span>Team training & handover sessions</div>
+        </div>
+      </div>
+      <div>
+        <div class="packages-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="pkg-card">
+            <div class="pkg-name">Ops Foundation</div>
+            <div class="pkg-tagline">For teams just getting started</div>
+            <div class="pkg-price">₦250k <sub>setup</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>CRM setup & config</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Analytics installation</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>2 automation workflows</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Reporting dashboard</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>1-day team training</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-badge">Full Stack</div>
+            <div class="pkg-name">Ops Pro</div>
+            <div class="pkg-tagline">Complete marketing infrastructure</div>
+            <div class="pkg-price">₦500k <sub>setup + ₦100k/mo</sub></div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full CRM ecosystem</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>6+ automation workflows</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Lead scoring model</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Custom KPI dashboards</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>S&M alignment docs</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Monthly management & optimisation</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Get Started</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 5: Startup Launch -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div><div class="tier-num">05</div></div>
+      <div class="tier-meta">
+        <div class="tier-tag">For Funded Startups</div>
+        <h2 class="tier-title">Startup Launch Package</h2>
+        <p class="tier-desc">Built specifically for funded startups going to market for the first time. You need to move fast, look premium, and generate early traction. This package does all three — delivered in 30 days.</p>
+      </div>
+    </div>
+    <div class="tier-body">
+      <div>
+        <div class="deliverables">
+          <h4>Everything in One Package</h4>
+          <div class="del-item"><span class="del-dot"></span>Digital audit & positioning strategy</div>
+          <div class="del-item"><span class="del-dot"></span>Brand identity (logo, colours, typography)</div>
+          <div class="del-item"><span class="del-dot"></span>Website design & development (up to 7 pages)</div>
+          <div class="del-item"><span class="del-dot"></span>Social media setup & profile optimisation</div>
+          <div class="del-item"><span class="del-dot"></span>Google Business Profile setup</div>
+          <div class="del-item"><span class="del-dot"></span>Launch email sequence (5 emails)</div>
+          <div class="del-item"><span class="del-dot"></span>90-day growth marketing roadmap</div>
+          <div class="del-item"><span class="del-dot"></span>First month of paid media management</div>
+        </div>
+      </div>
+      <div>
+        <div class="packages-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="pkg-card">
+            <div class="pkg-name">Launch Essential</div>
+            <div class="pkg-tagline">Brand + web + 90-day plan</div>
+            <div class="pkg-price">₦500k</div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Brand identity system</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>5-page website</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Social profiles setup</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>90-day growth roadmap</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>2 strategy sessions</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>30-day delivery</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Apply Now</div>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-badge">Full Launch</div>
+            <div class="pkg-name">Launch Pro</div>
+            <div class="pkg-tagline">Everything, out of the box</div>
+            <div class="pkg-price">₦950k</div>
+            <div class="pkg-divider"></div>
+            <div class="pkg-features">
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Full brand identity system</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>7-page premium website</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>CRM & analytics setup</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Launch email sequence</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>1st month paid media</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>90-day growth roadmap</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>Monthly reporting</div>
+              <div class="pkg-feature"><span class="pkg-check">✓</span>30-day delivery</div>
+            </div>
+            <div class="pkg-cta" onclick="showPage('contact')">Apply Now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER 6: Retainer -->
+  <div class="service-tier">
+    <div class="tier-header">
+      <div><div class="tier-num">06</div></div>
+      <div class="tier-meta">
+        <div class="tier-tag">Ongoing Partnership</div>
+        <h2 class="tier-title">Transformation Retainer</h2>
+        <p class="tier-desc">For businesses that are serious about sustained digital growth, the Transformation Retainer gives you a senior embedded digital transformation team without the overhead of full-time hires.</p>
+      </div>
+    </div>
+    <div style="padding:0 0 20px;">
+      <div class="retainer-card">
+        <div class="retainer-left">
+          <h3>Your agency. <span style="color:var(--orange)">Your team.</span> On demand.</h3>
+          <p>The Retainer is not a package — it's a partnership. We embed into your business as your digital transformation arm: sitting in strategy meetings, reviewing campaigns, evolving your positioning, and ensuring every part of your digital ecosystem is performing.</p>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:14px;color:var(--muted-lt);">Starting from <strong style="color:var(--orange);font-family:'Syne',sans-serif;font-size:20px;letter-spacing:-1px;">₦400k</strong> /month</div>
+            <div style="font-size:13px;color:var(--muted);">Custom scoped per client. 3-month minimum engagement.</div>
+          </div>
+          <div style="margin-top:28px;">
+            <div class="btn-primary" onclick="showPage('contact')">Apply for Retainer →</div>
+          </div>
+        </div>
+        <div class="retainer-perks">
+          <div class="retainer-perk">
+            <div class="retainer-perk-icon">🎯</div>
+            <div class="retainer-perk-text">Dedicated Senior Strategist<small>Not a junior account manager</small></div>
+          </div>
+          <div class="retainer-perk">
+            <div class="retainer-perk-icon">📅</div>
+            <div class="retainer-perk-text">Monthly Strategy Sessions<small>Direction + performance review</small></div>
+          </div>
+          <div class="retainer-perk">
+            <div class="retainer-perk-icon">⚡</div>
+            <div class="retainer-perk-text">Priority Execution<small>Your tasks jump the queue</small></div>
+          </div>
+          <div class="retainer-perk">
+            <div class="retainer-perk-icon">📊</div>
+            <div class="retainer-perk-text">Weekly KPI Reporting<small>Always know what's working</small></div>
+          </div>
+          <div class="retainer-perk">
+            <div class="retainer-perk-icon">🔄</div>
+            <div class="retainer-perk-text">Adaptive Strategy<small>Pivots as your business evolves</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Not sure which <span>package is right</span> for you?</h2>
+    <div class="btn-white" onclick="showPage('contact')">Let's Figure It Out Together →</div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Brands<span>Digitals</span></div>
+        <p class="footer-tagline">Digital transformation for African businesses ready to scale.</p>
+      </div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a onclick="showPage('services')">All Services</a></li><li><a onclick="showPage('contact')">Get a Quote</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('cases')">Case Studies</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a>hello@brandsdigitals.com.ng</a></li><li><a>Lagos, Nigeria</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 Brands Digitals Agency.</p></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="eyebrow">About Brands Digitals</div>
+    <h1>Strategy-led. <span style="color:var(--orange);">Africa-first.</span></h1>
+    <p>We're not a traditional digital agency. We're a digital transformation partner — built on academic rigour, practitioner experience, and a genuine belief that African businesses can compete globally.</p>
+  </div>
+
+  <!-- Story -->
+  <div class="about-story">
+    <div class="about-story-content">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-h" style="margin-bottom:28px;">From Abeokuta to <span class="acc">Africa.</span></h2>
+      <p>Brands Digitals Agency was founded in 2017 with a simple conviction: that Nigerian businesses deserved the same quality of digital strategy and execution as their counterparts in London, New York, or Nairobi. Seven years later, that conviction hasn't changed — only our capacity to deliver on it has grown.</p>
+      <p>What started as a website design and social media management outfit has evolved into a full-spectrum digital transformation agency — serving funded startups, hospitality brands, agro-tech companies, co-working spaces, and professional services firms across Nigeria.</p>
+      <p>In 2024, our founder Aanu Damilare Oke completed a Master's degree in Digital Marketing & Business Transformation at Rome Business School — bringing academic rigour and global perspective back into our work. That combination of street-level Nigerian market knowledge and world-class strategic education is what makes Brands Digitals genuinely different.</p>
+      <p>Today, we operate from Lagos and serve clients across Nigeria and internationally, with a selective client roster that allows us to deliver senior-level attention to every engagement we take on.</p>
+    </div>
+    <div class="about-story-visual">
+      <div class="about-profile-card">
+        <div class="about-profile-bg"></div>
+        <div class="about-profile-mono">ADO</div>
+        <div class="about-degree-chip">
+          <strong>MSc Digital Marketing</strong>
+          <em>Rome Business School</em>
+        </div>
+        <div class="about-profile-info">
+          <strong>Aanu Damilare Oke</strong>
+          <em>Founder & Chief Transformation Strategist</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="about-timeline">
+    <div class="section-label">Our Journey</div>
+    <h2 class="section-h">Seven years <span class="dim">of building.</span></h2>
+    <div class="timeline" style="padding-left:24px;margin-top:60px;">
+      <div class="tl-item">
+        <div class="tl-year">2017</div>
+        <div class="tl-content">
+          <h4>Brands Digitals Founded</h4>
+          <p>Started in Abeokuta, Ogun State, offering website design and social media management to local businesses.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-content">
+          <h4>100th Client Milestone</h4>
+          <p>Reached our first major milestone — 100 clients served across Abeokuta, Lagos, and Ibadan. Expanded services to include SEO and content strategy.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <div class="tl-content">
+          <h4>Digital Marketing Strategy Practice Launched</h4>
+          <p>Shifted from execution-only to strategy-first. Launched full digital marketing strategy engagements for fintech and professional services clients.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div class="tl-content">
+          <h4>Joined FOC Inc as Head of Tech & Marketing</h4>
+          <p>Founder Aanu took on the Head of Tech & Marketing role at Father of Creativity Limited, deepening enterprise-level digital transformation experience.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div class="tl-content">
+          <h4>Expanded to Lagos Operations</h4>
+          <p>Relocated primary operations to Lagos, enabling the agency to serve a broader base of funded startups and growth-stage companies.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <h4>MSc Graduation — Rome Business School</h4>
+          <p>Founder Aanu completed an MSc in Digital Marketing & Business Transformation, bringing a global strategic framework into the agency's methodology.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2025</div>
+        <div class="tl-content">
+          <h4>Relaunch as Full Digital Transformation Agency</h4>
+          <p>Official pivot to digital transformation consulting — with new service architecture, positioning, and a focus on funded startups and scaleups across Africa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="about-values">
+    <div class="section-label">What We Stand For</div>
+    <h2 class="section-h">The values that <span class="dim">guide every decision.</span></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-name">Strategy First</div>
+        <p class="value-desc">We never execute before we think. Every recommendation we make is grounded in data, context, and a clear understanding of where your business is going.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <div class="value-name">Africa-Native</div>
+        <p class="value-desc">We build strategies for African consumers, African infrastructure, and African market dynamics. Not Western playbooks copy-pasted to Lagos.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔬</div>
+        <div class="value-name">Evidence-Led</div>
+        <p class="value-desc">Opinions are welcome. Data makes decisions. We instrument everything, measure what matters, and iterate based on what we learn.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-name">True Partnership</div>
+        <p class="value-desc">We behave like a co-founder, not a vendor. Your growth is our growth. Your reputation is our reputation. We're in this with you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credentials -->
+  <div class="about-credentials">
+    <div class="section-label">Credentials & Recognition</div>
+    <h2 class="section-h">Qualified to <span class="dim">lead your transformation.</span></h2>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-icon">🎓</div>
+        <div class="cred-title">MSc Digital Marketing & Business Transformation</div>
+        <div class="cred-sub">Rome Business School, Italy</div>
+        <p class="cred-desc">A Master's degree in digital marketing strategy and business transformation — combining global marketing theory with operational leadership.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">⭐</div>
+        <div class="cred-title">4.8/5 Average Client Rating</div>
+        <div class="cred-sub">Across Google, Clutch, Trustpilot & LinkedIn</div>
+        <p class="cred-desc">200+ verified reviews across major review platforms. Consistent praise for strategic quality, communication, and measurable results.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🏢</div>
+        <div class="cred-title">Head of Tech & Marketing — FOC Inc</div>
+        <div class="cred-sub">Father of Creativity Limited</div>
+        <p class="cred-desc">Enterprise-level digital transformation leadership experience, overseeing technology infrastructure and multi-channel marketing operations.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">📈</div>
+        <div class="cred-title">7+ Years, 100+ Clients</div>
+        <div class="cred-sub">Across Nigeria & Internationally</div>
+        <p class="cred-desc">Proven track record across F&B, fintech, agro-tech, education, co-working, professional services, and e-commerce sectors.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🌐</div>
+        <div class="cred-title">International Freelance Platforms</div>
+        <div class="cred-sub">Verified Top Performer</div>
+        <p class="cred-desc">Recognised on global freelance platforms — bringing international client perspective and best practices into every local engagement.</p>
+      </div>
+      <div class="cred-card">
+        <div class="cred-icon">🏆</div>
+        <div class="cred-title">Clutch.co Top Agency</div>
+        <div class="cred-sub">Digital Marketing — Nigeria</div>
+        <p class="cred-desc">Listed among Nigeria's top digital marketing agencies on Clutch.co — based on verified client reviews and case study outcomes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Want to work with a <span>team that gets it?</span></h2>
+    <div class="btn-white" onclick="showPage('contact')">Start a Conversation →</div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Brands<span>Digitals</span></div><p class="footer-tagline">Digital transformation for African businesses.</p></div>
+      <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('cases')">Case Studies</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a>hello@brandsdigitals.com.ng</a></li><li><a>Lagos, Nigeria</a></li></ul></div>
+      <div class="footer-col"><h5>&nbsp;</h5><ul></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 Brands Digitals Agency.</p></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: CASE STUDIES
+══════════════════════════════════════════════ -->
+<div class="page" id="page-cases">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="eyebrow">Case Studies</div>
+    <h1>Work that <span style="color:var(--orange);">moves the needle.</span></h1>
+    <p>Real clients. Real challenges. Real results. Here's what digital transformation actually looks like in practice.</p>
+  </div>
+
+  <div class="cases-grid-section">
+    <div class="cases-filters">
+      <button class="filter-btn active">All Work</button>
+      <button class="filter-btn">F&B</button>
+      <button class="filter-btn">Agro / Pet Care</button>
+      <button class="filter-btn">Co-working</button>
+      <button class="filter-btn">Strategy</button>
+    </div>
+    <div class="cases-grid">
+      <!-- Amala Sky -->
+      <div class="case-card">
+        <div class="case-img case-amala"><span style="font-size:48px;">🍲</span><div class="case-img-label">AMALA SKY</div></div>
+        <div class="case-body">
+          <div class="case-industry">Restaurant · F&B · Lagos & Abuja</div>
+          <div class="case-title">Amala Sky — Full Digital Transformation</div>
+          <p class="case-desc">A premium Nigerian cuisine brand expanding across two cities needed a strategy to dominate local search, grow its social presence, and increase reservation volume. We delivered a complete digital overhaul.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">3×</div><div class="case-metric-l">Online Visibility</div></div>
+            <div class="case-metric"><div class="case-metric-n">+47%</div><div class="case-metric-l">Reservations</div></div>
+            <div class="case-metric"><div class="case-metric-n">2</div><div class="case-metric-l">Cities Activated</div></div>
+          </div>
+          <div class="case-tags">
+            <span class="tag">Local SEO</span>
+            <span class="tag">Social Strategy</span>
+            <span class="tag">Brand Positioning</span>
+            <span class="tag">Content System</span>
+          </div>
+        </div>
+      </div>
+      <!-- PetWorld -->
+      <div class="case-card">
+        <div class="case-img case-petworld"><span style="font-size:48px;">🐾</span><div class="case-img-label">PETWORLD</div></div>
+        <div class="case-body">
+          <div class="case-industry">Pet Care · Agro Services · Ibadan</div>
+          <div class="case-title">PetWorld Agrofarm — Digital Strategy & Brand Positioning</div>
+          <p class="case-desc">An Ibadan-based pet care and agro services business with strong offline reputation but zero digital presence. We built their entire digital strategy from the ground up — positioning, channels, content, and a 12-month roadmap.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">+120%</div><div class="case-metric-l">Web Traffic</div></div>
+            <div class="case-metric"><div class="case-metric-n">↑</div><div class="case-metric-l">Brand Perception</div></div>
+            <div class="case-metric"><div class="case-metric-n">90-Day</div><div class="case-metric-l">Roadmap</div></div>
+          </div>
+          <div class="case-tags">
+            <span class="tag">Digital Strategy</span>
+            <span class="tag">Brand Positioning</span>
+            <span class="tag">SEO</span>
+            <span class="tag">Content</span>
+          </div>
+        </div>
+      </div>
+      <!-- Ekoss360 -->
+      <div class="case-card">
+        <div class="case-img case-ekoss"><span style="font-size:48px;">💡</span><div class="case-img-label">EKOSS360</div></div>
+        <div class="case-body">
+          <div class="case-industry">Co-working · Innovation Hub · Ibadan</div>
+          <div class="case-title">Ekoss360 Innovation Hub — Go-to-Market Strategy</div>
+          <p class="case-desc">A new co-working and innovation hub entering a growing but competitive Ibadan market. We conducted full competitive analysis, audience segmentation, and delivered a six-pillar digital strategy with a 90-day execution roadmap.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">6</div><div class="case-metric-l">Strategy Pillars</div></div>
+            <div class="case-metric"><div class="case-metric-n">90-Day</div><div class="case-metric-l">GTM Roadmap</div></div>
+            <div class="case-metric"><div class="case-metric-n">5</div><div class="case-metric-l">Segments Mapped</div></div>
+          </div>
+          <div class="case-tags">
+            <span class="tag">GTM Strategy</span>
+            <span class="tag">Competitive Analysis</span>
+            <span class="tag">Audience Research</span>
+            <span class="tag">Content Strategy</span>
+          </div>
+        </div>
+      </div>
+      <!-- Generic placeholder cards for visual completeness -->
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#200a1a,#120510);"><span style="font-size:48px;">💳</span><div class="case-img-label">FINTECH CLIENT</div></div>
+        <div class="case-body">
+          <div class="case-industry">Fintech · Financial Services</div>
+          <div class="case-title">Fintech Brand — Growth Marketing & Acquisition</div>
+          <p class="case-desc">A fintech startup needed to grow its user base from 0 to 10,000 active users within 6 months. We built their full demand generation engine including paid acquisition, referral loops, and content marketing.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">10k+</div><div class="case-metric-l">Users Acquired</div></div>
+            <div class="case-metric"><div class="case-metric-n">–40%</div><div class="case-metric-l">CAC Reduction</div></div>
+          </div>
+          <div class="case-tags"><span class="tag">Growth Marketing</span><span class="tag">Paid Ads</span><span class="tag">CRO</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#1a1a10,#0f0f08);"><span style="font-size:48px;">📚</span><div class="case-img-label">EDTECH</div></div>
+        <div class="case-body">
+          <div class="case-industry">Education · EdTech</div>
+          <div class="case-title">EdTech Institution — Brand Rebuild & Digital Launch</div>
+          <p class="case-desc">An educational institution transitioning to online learning needed a full digital rebrand and a strategy to attract students in a competitive market.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">+200%</div><div class="case-metric-l">Enquiries</div></div>
+            <div class="case-metric"><div class="case-metric-n">4.9★</div><div class="case-metric-l">Brand Ratings</div></div>
+          </div>
+          <div class="case-tags"><span class="tag">Brand Rebuild</span><span class="tag">SEO</span><span class="tag">Paid Ads</span></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#0a1a18,#060e0c);"><span style="font-size:48px;">🛒</span><div class="case-img-label">ECOMMERCE</div></div>
+        <div class="case-body">
+          <div class="case-industry">E-Commerce · Retail</div>
+          <div class="case-title">E-commerce Brand — Revenue Growth & Retention</div>
+          <p class="case-desc">A Nigerian e-commerce brand struggling with high cart abandonment and low repeat purchase rates. We rebuilt their email marketing, CRM, and retention strategy from scratch.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><div class="case-metric-n">+85%</div><div class="case-metric-l">Repeat Purchases</div></div>
+            <div class="case-metric"><div class="case-metric-n">–30%</div><div class="case-metric-l">Abandonment</div></div>
+          </div>
+          <div class="case-tags"><span class="tag">Email Marketing</span><span class="tag">CRM</span><span class="tag">Retention</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Want results like <span>these for your business?</span></h2>
+    <div class="btn-white" onclick="showPage('contact')">Let's Talk →</div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Brands<span>Digitals</span></div><p class="footer-tagline">Digital transformation for African businesses.</p></div>
+      <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a>hello@brandsdigitals.com.ng</a></li></ul></div>
+      <div class="footer-col"><h5>&nbsp;</h5><ul></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 Brands Digitals Agency.</p></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: INSIGHTS
+══════════════════════════════════════════════ -->
+<div class="page" id="page-insights">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="eyebrow">Insights & Thought Leadership</div>
+    <h1>Thinking that <span style="color:var(--orange);">moves markets.</span></h1>
+    <p>Strategy, growth marketing, and digital transformation insights — written for African founders and marketing leaders who are serious about winning.</p>
+  </div>
+
+  <div class="insights-section">
+    <div class="insights-featured">
+      <div class="insight-card">
+        <div class="insight-img insight-img-1"><span style="font-size:40px;">🧭</span><div class="insight-img-label">TRANSFORMATION</div></div>
+        <div class="insight-body">
+          <div class="insight-cat">Digital Transformation</div>
+          <div class="insight-title large">What Digital Transformation Actually Means for Nigerian Businesses in 2025</div>
+          <p class="insight-excerpt">Every consultant is selling "digital transformation" — but most are just selling digital marketing with a fancier name. Here's what the real thing looks like, and how to tell the difference before you spend a kobo.</p>
+          <div class="insight-meta">
+            <span>Mercien (Aanu Damilare Oke)</span>
+            <span>8 min read</span>
+            <span>March 2025</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="insight-card" style="margin-bottom:16px;">
+          <div class="insight-img insight-img-2" style="aspect-ratio:16/6;"><span style="font-size:28px;">📊</span><div class="insight-img-label">STRATEGY</div></div>
+          <div class="insight-body">
+            <div class="insight-cat">Growth Strategy</div>
+            <div class="insight-title">Why Most Nigerian Startups Waste Their Marketing Budget (And How to Fix It)</div>
+            <div class="insight-meta"><span>Mercien</span><span>6 min read</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-img insight-img-3" style="aspect-ratio:16/6;"><span style="font-size:28px;">🔍</span><div class="insight-img-label">SEO</div></div>
+          <div class="insight-body">
+            <div class="insight-cat">SEO & Content</div>
+            <div class="insight-title">Local SEO in Nigeria: The Complete 2025 Playbook for Service Businesses</div>
+            <div class="insight-meta"><span>Mercien</span><span>12 min read</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-img insight-img-4" style="aspect-ratio:16/7;"><span style="font-size:28px;">💰</span><div class="insight-img-label">PAID ADS</div></div>
+        <div class="insight-body">
+          <div class="insight-cat">Paid Media</div>
+          <div class="insight-title">Meta Ads in 2025: What's Working for Nigerian Brands Right Now</div>
+          <p class="insight-excerpt">CPMs are up. Organic reach is down. Here's how to make paid social work in today's environment.</p>
+          <div class="insight-meta"><span>Mercien</span><span>7 min read</span></div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-img insight-img-5" style="aspect-ratio:16/7;"><span style="font-size:28px;">⚙️</span><div class="insight-img-label">OPERATIONS</div></div>
+        <div class="insight-body">
+          <div class="insight-cat">Marketing Operations</div>
+          <div class="insight-title">The CRM Stack That Every Nigerian Startup Should Have Before Spending on Ads</div>
+          <p class="insight-excerpt">You can't pour water into a leaking bucket. Before you scale, you need these systems in place.</p>
+          <div class="insight-meta"><span>Mercien</span><span>5 min read</span></div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-img insight-img-1" style="aspect-ratio:16/7;"><span style="font-size:28px;">🎯</span><div class="insight-img-label">BRANDING</div></div>
+        <div class="insight-body">
+          <div class="insight-cat">Brand Strategy</div>
+          <div class="insight-title">Positioning Your African Brand to Compete Internationally: A Framework</div>
+          <p class="insight-excerpt">African brands have an authenticity advantage that Western brands can't buy. Here's how to weaponise it.</p>
+          <div class="insight-meta"><span>Mercien</span><span>9 min read</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner">
+      <div>
+        <div class="section-label">The Transformation Newsletter</div>
+        <h2>Strategy insights for <span style="color:var(--orange);">African founders.</span></h2>
+        <p>Every two weeks — one idea, one framework, one case study. No fluff. Built for founders and marketers who are serious about growth.</p>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px;">Join 1,200+ subscribers. No spam. Unsubscribe anytime.</p>
+      </div>
+      <div>
+        <div class="newsletter-form">
+          <input class="newsletter-input" type="email" placeholder="your@email.com">
+          <div class="btn-primary">Subscribe →</div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:14px;font-weight:300;">By subscribing you agree to receive marketing emails from Brands Digitals Agency.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Ready to transform <span>your business?</span></h2>
+    <div class="btn-white" onclick="showPage('contact')">Book a Strategy Call →</div>
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div><div class="footer-brand-name">Brands<span>Digitals</span></div><p class="footer-tagline">Digital transformation for African businesses.</p></div>
+      <div class="footer-col"><h5>Pages</h5><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('services')">Services</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a>hello@brandsdigitals.com.ng</a></li></ul></div>
+      <div class="footer-col"><h5>&nbsp;</h5><ul></ul></div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 Brands Digitals Agency.</p></div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="page-hero-orb"></div>
+    <div class="eyebrow">Get In Touch</div>
+    <h1>Let's build <span style="color:var(--orange);">something great.</span></h1>
+    <p>Tell us where you are and where you want to go. We'll be straight with you about whether we can help — and what that would look like.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>We'd love to <span style="color:var(--orange);">hear from you.</span></h3>
+      <p>Whether you're a funded startup looking for a transformation partner, a scaleup ready to professionalise your marketing, or just someone who wants a second opinion on their digital strategy — we're happy to talk. No hard sell.</p>
+      <div class="contact-channels">
+        <div class="contact-ch">
+          <div class="contact-ch-icon">📧</div>
+          <div><div class="contact-ch-label">Email</div><div class="contact-ch-val">hello@brandsdigitals.com.ng</div></div>
+        </div>
+        <div class="contact-ch">
+          <div class="contact-ch-icon">📍</div>
+          <div><div class="contact-ch-label">Location</div><div class="contact-ch-val">Lagos, Nigeria (Remote-first)</div></div>
+        </div>
+        <div class="contact-ch">
+          <div class="contact-ch-icon">💼</div>
+          <div><div class="contact-ch-label">LinkedIn</div><div class="contact-ch-val">Brands Digitals Agency</div></div>
+        </div>
+        <div class="contact-ch">
+          <div class="contact-ch-icon">📸</div>
+          <div><div class="contact-ch-label">Instagram</div><div class="contact-ch-val">@brandsdigitals</div></div>
+        </div>
+      </div>
+      <!-- FAQ -->
+      <div class="faq-list" style="margin-top:0;">
+        <div class="section-label" style="margin-bottom:20px;">Quick Questions</div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How does a typical engagement start?
+            <span class="faq-q-icon">+</span>
+          </div>
+          <div class="faq-a">Every engagement starts with a discovery call — no charge, no obligation. We ask questions, you ask questions, and we figure out together whether we're a good fit. If we are, we'll scope and propose. If we're not, we'll tell you honestly.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you work with businesses outside Nigeria?
+            <span class="faq-q-icon">+</span>
+          </div>
+          <div class="faq-a">Yes. While our primary focus is African businesses, we work with clients globally — especially diaspora-led businesses targeting African markets. We've served clients from the UK, US, and across West Africa.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What stage of business do you typically work with?
+            <span class="faq-q-icon">+</span>
+          </div>
+          <div class="faq-a">Our sweet spot is funded startups and growth-stage scaleups — typically post-seed to Series A/B. We also work with established SMEs ready to take their digital presence to the next level. We don't typically work with businesses at the idea stage.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How long does a typical project take?
+            <span class="faq-q-icon">+</span>
+          </div>
+          <div class="faq-a">A Digital Audit & Strategy takes 2–3 weeks. Brand & Digital Presence takes 4–8 weeks. The Startup Launch Package is delivered in 30 days. Retainer engagements are ongoing with a 3-month minimum. We'll give you a precise timeline during scoping.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do you require a deposit?
+            <span class="faq-q-icon">+</span>
+          </div>
+          <div class="faq-a">Yes. Project-based work requires a 50% deposit upfront with the balance due on delivery. Retainer engagements are billed monthly in advance. We accept bank transfer, Paystack, and Flutterwave.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div class="card" style="border-color:var(--border-md);">
+        <h3 style="font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:6px;">Book a Strategy Call</h3>
+        <p style="font-size:14px;color:var(--muted);margin-bottom:28px;font-weight:300;">Fill in the form and we'll get back to you within 24 hours to schedule a call.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input class="form-input" type="text" placeholder="Chioma">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input class="form-input" type="text" placeholder="Okafor">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Email *</label>
+          <input class="form-input" type="email" placeholder="chioma@yourstartup.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company / Business Name *</label>
+          <input class="form-input" type="text" placeholder="YourStartup Ltd">
+        </div>
+        <div class="form-group">
+          <label class="form-label">What service are you most interested in?</label>
+          <select class="form-select">
+            <option value="">— Select a service —</option>
+            <option>Digital Audit & Strategy</option>
+            <option>Brand & Digital Presence</option>
+            <option>Growth & Demand Engine</option>
+            <option>Marketing Operations</option>
+            <option>Startup Launch Package</option>
+            <option>Transformation Retainer</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Monthly marketing budget (approx)?</label>
+          <select class="form-select">
+            <option value="">— Select a range —</option>
+            <option>Under ₦100k</option>
+            <option>₦100k – ₦300k</option>
+            <option>₦300k – ₦600k</option>
+            <option>₦600k – ₦1.5M</option>
+            <option>₦1.5M+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell us about your business and what you're trying to achieve</label>
+          <textarea class="form-textarea" placeholder="We're a funded startup in the logistics space. We've raised a seed round and need to build our brand and acquire our first 500 customers..."></textarea>
+        </div>
+        <div class="btn-primary form-submit" style="justify-content:center;margin-top:8px;">Send Message →</div>
+        <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:14px;font-weight:300;">We respond within 24 hours, Monday–Friday.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Brands<span>Digitals</span></div>
+        <p class="footer-tagline">Digital transformation for African businesses ready to scale. Strategy · Technology · Growth.</p>
+        <div class="footer-social">
+          <div class="social-btn">in</div>
+          <div class="social-btn">ig</div>
+          <div class="social-btn">tw</div>
+          <div class="social-btn">yt</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a onclick="showPage('services')">Digital Audit & Strategy</a></li>
+          <li><a onclick="showPage('services')">Brand & Digital Presence</a></li>
+          <li><a onclick="showPage('services')">Growth & Demand Engine</a></li>
+          <li><a onclick="showPage('services')">Startup Launch Package</a></li>
+          <li><a onclick="showPage('services')">Transformation Retainer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a onclick="showPage('about')">About Mercien</a></li>
+          <li><a onclick="showPage('cases')">Case Studies</a></li>
+          <li><a onclick="showPage('insights')">Insights</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a>hello@brandsdigitals.com.ng</a></li>
+          <li><a>Lagos, Nigeria</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Brands Digitals Agency. Founded by <a onclick="showPage('about')">Mercien (Aanu Damilare Oke)</a>.</p>
+      <div class="footer-badge">🎓 MSc Digital Marketing — Rome Business School</div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     JS
+══════════════════════════════════════════════ -->
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+}
+
+function toggleMenu() {
+  const m = document.getElementById('mobile-menu');
+  m.classList.toggle('open');
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// Filter buttons (visual only)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
