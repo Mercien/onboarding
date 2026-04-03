@@ -53,7 +53,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" as const }}
+          transition={{ duration: 0.8, ease: "easeOut" as any }}
           className="flex flex-col items-start"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-blue-light/10 border border-brand-blue-light/20 rounded-full mb-8">
