@@ -13,10 +13,10 @@ interface ValueCardProps {
 export function ValueCard({ icon: Icon, title, description, className }: ValueCardProps) {
   return (
     <div className={cn(
-      "p-8 rounded-2xl bg-navy-card border border-white/7 transition-all duration-300 hover:border-brand-orange/30 group text-center",
+      "p-8 rounded-2xl bg-navy-card border border-white/7 transition-all duration-300 hover:border-brand-blue-light/30 group text-center",
       className
     )}>
-      <div className="w-14 h-14 bg-brand-orange/10 rounded-full flex items-center justify-center text-brand-orange mb-6 mx-auto group-hover:scale-110 transition-transform">
+      <div className="w-14 h-14 bg-brand-blue-light/10 rounded-full flex items-center justify-center text-brand-blue-light mb-6 mx-auto group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
       <h4 className="text-lg font-bold text-white mb-3 tracking-tight">

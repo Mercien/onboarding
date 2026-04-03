@@ -17,7 +17,7 @@ export default function ContactPage() {
       <Nav />
       {/* Contact Hero */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 overflow-hidden border-b border-white/7 bg-gradient-to-b from-navy to-navy-mid">
-        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-orange/13 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-blue-light/13 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -27,7 +27,7 @@ export default function ContactPage() {
             <div>
               <div className="section-label">Connect</div>
               <h1 className="text-5xl md:text-8xl font-display font-extrabold tracking-tighter leading-[0.9] mt-6">
-                Start Your <span className="text-brand-orange">Venture</span> <br /> 
+                Start Your <span className="text-brand-blue-light">Venture</span> <br /> 
                 <span className="text-muted">Legacy</span>.
               </h1>
             </div>
@@ -53,22 +53,22 @@ export default function ContactPage() {
               
               <div className="space-y-6">
                 <a href="mailto:hello@brandsdigitals.com.ng" className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted group-hover:border-brand-orange group-hover:text-brand-orange transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted group-hover:border-brand-blue-light group-hover:text-brand-blue-light transition-all duration-300">
                     <Mail size={20} />
                   </div>
                   <div>
                     <span className="block text-[10px] text-muted-lt font-bold uppercase tracking-widest mb-1">Email Us</span>
-                    <span className="text-lg text-white font-medium group-hover:text-brand-orange transition-colors">hello@brandsdigitals.com.ng</span>
+                    <span className="text-lg text-white font-medium group-hover:text-brand-blue-light transition-colors">hello@brandsdigitals.com.ng</span>
                   </div>
                 </a>
 
                 <a href="tel:+23400000000" className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted group-hover:border-brand-orange group-hover:text-brand-orange transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted group-hover:border-brand-blue-light group-hover:text-brand-blue-light transition-all duration-300">
                     <Phone size={20} />
                   </div>
                   <div>
                     <span className="block text-[10px] text-muted-lt font-bold uppercase tracking-widest mb-1">Call Us</span>
-                    <span className="text-lg text-white font-medium group-hover:text-brand-orange transition-colors">+234 (0) xxx xxx xxxx</span>
+                    <span className="text-lg text-white font-medium group-hover:text-brand-blue-light transition-colors">+234 (0) xxx xxx xxxx</span>
                   </div>
                 </a>
 
@@ -90,20 +90,20 @@ export default function ContactPage() {
               </h3>
               <div className="flex gap-4">
                 {[Briefcase, Camera, Send].map((Icon, idx) => (
-                  <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted hover:border-brand-orange hover:text-brand-orange transition-all duration-300">
+                  <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted hover:border-brand-blue-light hover:text-brand-blue-light transition-all duration-300">
                     <Icon size={20} />
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="bg-brand-orange/10 border border-brand-orange/20 p-8 rounded-2xl">
-              <p className="text-sm text-brand-orange-light font-medium italic leading-relaxed">
+            <div className="bg-brand-blue-light/10 border border-brand-blue-light/20 p-8 rounded-2xl">
+              <p className="text-sm text-brand-blue-light-light font-medium italic leading-relaxed">
                 &quot;We don&apos;t do &apos;quick estimates&apos;. We do deep-dive discovery calls to ensure our builders are aligned with your vision.&quot;
               </p>
               <div className="mt-4 flex items-center gap-2">
-                <span className="w-6 h-px bg-brand-orange/40" />
-                <span className="text-[10px] text-brand-orange font-bold uppercase tracking-widest">
+                <span className="w-6 h-px bg-brand-blue-light/40" />
+                <span className="text-[10px] text-brand-blue-light font-bold uppercase tracking-widest">
                   Mercien, Founder
                 </span>
               </div>
@@ -124,7 +124,7 @@ export default function ContactPage() {
       {/* Full Width Intake CTA */}
       <section className="py-24 px-6 md:px-16 border-b border-white/7">
         <div className="max-w-4xl mx-auto p-12 lg:p-16 bg-navy-mid border border-white/7 rounded-[2rem] text-center shadow-[0_0_80px_-20px_rgba(242,138,2,0.1)] relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[100px] bg-brand-orange/20 blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[100px] bg-brand-blue-light/20 blur-[100px] pointer-events-none" />
           
           <h4 className="text-3xl md:text-5xl font-display font-bold text-white mb-6 relative z-10">
             Ready to start your Intake?

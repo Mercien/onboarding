@@ -37,7 +37,7 @@ export function Step2({ onNext, onBack }: { onNext: () => void; onBack: () => vo
         <label className="text-sm font-medium text-muted">Industry / Sector *</label>
         <select
           {...register("industry")}
-          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white appearance-none outline-none focus:border-brand-orange transition-all"
+          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white appearance-none outline-none focus:border-brand-blue-light transition-all"
         >
           <option value="">Select industry</option>
           {INDUSTRIES.map((ind) => (
@@ -58,7 +58,7 @@ export function Step2({ onNext, onBack }: { onNext: () => void; onBack: () => vo
               className={cn(
                 "p-4 border rounded-xl text-left transition-all duration-200 group",
                 currentStage === stage.id
-                  ? "bg-brand-orange/10 border-brand-orange shadow-[0_4px_12px_rgba(242,138,2,0.1)]"
+                  ? "bg-brand-blue-light/10 border-brand-blue-light shadow-[0_4px_12px_rgba(242,138,2,0.1)]"
                   : "bg-navy-light border-white/7 hover:border-white/20"
               )}
             >
@@ -87,7 +87,7 @@ export function Step2({ onNext, onBack }: { onNext: () => void; onBack: () => vo
               className={cn(
                 "p-3 border rounded-lg text-center transition-all text-xs font-medium",
                 currentFunding === f.id
-                  ? "bg-brand-orange text-white border-brand-orange"
+                  ? "bg-brand-orange text-white border-brand-blue-light"
                   : "bg-navy-light border-white/7 text-muted hover:border-white/20"
               )}
             >

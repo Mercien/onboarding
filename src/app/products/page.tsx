@@ -1,18 +1,20 @@
+"use client";
+
 import * as React from "react";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowUpRight, GraduationCap, Briefcase, Globe, Settings, Check, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 
 // Framer Motion Variants
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (custom: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" }
+    transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" as const }
   })
 };
 
@@ -27,7 +29,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto">
           <motion.div
             custom={0} initial="hidden" animate="visible" variants={fadeUp}
-            className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
+            className="inline-flex items-center gap-2 bg-brand-blue-light/10 border border-brand-blue-light/20 text-brand-blue-light px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest"
           >
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
             Brands Digitals Products
@@ -37,7 +39,7 @@ export default function ProductsPage() {
             custom={1} initial="hidden" animate="visible" variants={fadeUp}
             className="text-5xl md:text-7xl lg:text-[80px] font-display font-extrabold tracking-tighter leading-[1] max-w-4xl mt-8"
           >
-            We build the tools <span className="text-brand-orange">we couldn&apos;t find.</span>
+            We build the tools <span className="text-brand-blue-light">we couldn&apos;t find.</span>
           </motion.h1>
           
           <motion.p 
@@ -109,7 +111,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Mockup Left */}
-          <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-orange/30 transition-colors duration-500">
+          <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-blue-light/30 transition-colors duration-500">
             <div className="bg-navy-card px-4 py-3 flex items-center gap-3 border-b border-white/7">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -124,7 +126,7 @@ export default function ProductsPage() {
             <div className="p-5">
               <div className="grid grid-cols-3 gap-3 mb-4">
                 <div className="bg-navy-card border border-white/7 rounded-lg p-4">
-                  <div className="font-display font-extrabold text-2xl tracking-tighter">147<span className="text-brand-orange text-sm ml-1">↑</span></div>
+                  <div className="font-display font-extrabold text-2xl tracking-tighter">147<span className="text-brand-blue-light text-sm ml-1">↑</span></div>
                   <div className="text-[10px] text-muted mt-1 uppercase tracking-wider">Active Contacts</div>
                 </div>
                 <div className="bg-navy-card border border-white/7 rounded-lg p-4">
@@ -140,18 +142,18 @@ export default function ProductsPage() {
               <div className="bg-navy-card border border-white/7 rounded-lg p-4">
                 <div className="text-[10px] text-muted tracking-widest uppercase mb-3 font-semibold">Sales Pipeline</div>
                 <div className="flex gap-2 text-xs">
-                  <div className="flex-1 border-t-2 border-brand-orange/50 pt-2">
+                  <div className="flex-1 border-t-2 border-brand-blue-light/50 pt-2">
                     <div className="text-[9px] text-muted mb-2 text-center">NEW LEAD</div>
-                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 mb-1.5 font-medium">Amaka Foods <span className="block text-[9px] text-brand-orange mt-0.5">₦350k</span></div>
-                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 font-medium">TechVault Ltd <span className="block text-[9px] text-brand-orange mt-0.5">₦180k</span></div>
+                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 mb-1.5 font-medium">Amaka Foods <span className="block text-[9px] text-brand-blue-light mt-0.5">₦350k</span></div>
+                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 font-medium">TechVault Ltd <span className="block text-[9px] text-brand-blue-light mt-0.5">₦180k</span></div>
                   </div>
-                  <div className="flex-1 border-t-2 border-brand-orange/50 pt-2">
+                  <div className="flex-1 border-t-2 border-brand-blue-light/50 pt-2">
                     <div className="text-[9px] text-muted mb-2 text-center">DISCOVERY</div>
-                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 font-medium">Regal Clinics <span className="block text-[9px] text-brand-orange mt-0.5">₦600k</span></div>
+                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 font-medium">Regal Clinics <span className="block text-[9px] text-brand-blue-light mt-0.5">₦600k</span></div>
                   </div>
-                  <div className="flex-1 border-t-2 border-brand-orange/50 pt-2">
+                  <div className="flex-1 border-t-2 border-brand-blue-light/50 pt-2">
                     <div className="text-[9px] text-muted mb-2 text-center">PROPOSAL</div>
-                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 mb-1.5 font-medium">SwiftLog NG <span className="block text-[9px] text-brand-orange mt-0.5">₦1.2M</span></div>
+                    <div className="bg-navy-light text-[10px] border border-white/7 rounded p-2 mb-1.5 font-medium">SwiftLog NG <span className="block text-[9px] text-brand-blue-light mt-0.5">₦1.2M</span></div>
                   </div>
                   <div className="flex-1 border-t-2 border-green-500/50 pt-2">
                     <div className="text-[9px] text-muted mb-2 text-center">WON ✓</div>
@@ -173,7 +175,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">FlowDesk Nexus</h2>
-            <div className="font-mono text-sm text-brand-orange mb-6 tracking-wide">// CRM & Business Operations Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// CRM & Business Operations Platform</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               The CRM that Nigerian businesses actually use. FlowDesk Nexus was built because every CRM tool on the market was designed for Silicon Valley startups — not for a Lagos restaurant owner tracking reservations or an Ibadan law firm managing client cases.
@@ -225,7 +227,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">AdForge</h2>
-            <div className="font-mono text-sm text-brand-orange mb-6 tracking-wide">// AI Ad Creative Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// AI Ad Creative Platform</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               Creating ads that convert is the hardest part of digital marketing. AdForge eliminates that bottleneck. Feed it a creative brief and it outputs multiple on-brand ad variations ready for Meta, Google, and TikTok in seconds, not days.
@@ -259,7 +261,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Mockup Right */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-orange/30 transition-colors duration-500">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-blue-light/30 transition-colors duration-500">
             <div className="bg-navy-card px-4 py-3 flex items-center gap-3 border-b border-white/7">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -272,31 +274,31 @@ export default function ProductsPage() {
             </div>
             <div className="p-5 flex flex-col gap-4">
               <div className="bg-navy-card border border-white/7 rounded-lg p-4">
-                <div className="text-[10px] text-brand-orange font-mono uppercase tracking-widest mb-2">Creative Brief →</div>
+                <div className="text-[10px] text-brand-blue-light font-mono uppercase tracking-widest mb-2">Creative Brief →</div>
                 <div className="text-xs text-muted-lt font-light italic leading-relaxed">&quot;Promote our new Amala Sky Lekki branch opening. Target: Lagos food lovers aged 25–45. Tone: Premium but warm. Goal: Drive reservations.&quot;</div>
               </div>
               
               <div className="flex items-center gap-3 opacity-60">
                 <div className="flex-1 h-px bg-white/10" />
-                <div className="text-[9px] font-mono text-brand-orange">GENERATING 4 VARIATIONS...</div>
+                <div className="text-[9px] font-mono text-brand-blue-light">GENERATING 4 VARIATIONS...</div>
                 <div className="flex-1 h-px bg-white/10" />
               </div>
               
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-gradient-to-br from-indigo-900 to-navy rounded-lg p-3 relative h-28 border border-white/10 flex items-center justify-center">
-                  <span className="absolute top-2 left-2 bg-brand-orange/20 border border-brand-orange/30 text-[8px] font-bold text-brand-orange px-1.5 py-0.5 rounded">V1 - AWARENESS</span>
+                  <span className="absolute top-2 left-2 bg-brand-blue-light/20 border border-brand-blue-light/30 text-[8px] font-bold text-brand-blue-light px-1.5 py-0.5 rounded">V1 - AWARENESS</span>
                   <span className="font-display font-extrabold opacity-20 text-2xl tracking-tight absolute bottom-2 right-2">AMALA</span>
                 </div>
                 <div className="bg-gradient-to-br from-orange-950 to-navy rounded-lg p-3 relative h-28 border border-white/10 flex items-center justify-center">
-                  <span className="absolute top-2 left-2 bg-brand-orange/20 border border-brand-orange/30 text-[8px] font-bold text-brand-orange px-1.5 py-0.5 rounded">V2 - CONVERT</span>
+                  <span className="absolute top-2 left-2 bg-brand-blue-light/20 border border-brand-blue-light/30 text-[8px] font-bold text-brand-blue-light px-1.5 py-0.5 rounded">V2 - CONVERT</span>
                   <span className="font-display font-extrabold opacity-20 text-2xl tracking-tight absolute bottom-2 right-2">RESERVE</span>
                 </div>
                 <div className="bg-gradient-to-br from-slate-900 to-navy-mid rounded-lg p-3 relative h-28 border border-white/10 flex items-center justify-center">
-                  <span className="absolute top-2 left-2 bg-brand-orange/20 border border-brand-orange/30 text-[8px] font-bold text-brand-orange px-1.5 py-0.5 rounded">V3 - STORY</span>
+                  <span className="absolute top-2 left-2 bg-brand-blue-light/20 border border-brand-blue-light/30 text-[8px] font-bold text-brand-blue-light px-1.5 py-0.5 rounded">V3 - STORY</span>
                   <span className="font-display font-extrabold opacity-20 text-2xl tracking-tight absolute bottom-2 right-2">LEKKI</span>
                 </div>
                 <div className="bg-gradient-to-br from-purple-950 to-navy rounded-lg p-3 relative h-28 border border-white/10 flex items-center justify-center">
-                  <span className="absolute top-2 left-2 bg-brand-orange/20 border border-brand-orange/30 text-[8px] font-bold text-brand-orange px-1.5 py-0.5 rounded">V4 - RETARGET</span>
+                  <span className="absolute top-2 left-2 bg-brand-blue-light/20 border border-brand-blue-light/30 text-[8px] font-bold text-brand-blue-light px-1.5 py-0.5 rounded">V4 - RETARGET</span>
                   <span className="font-display font-extrabold opacity-20 text-2xl tracking-tight absolute bottom-2 right-2">OPEN NOW</span>
                 </div>
               </div>
@@ -311,7 +313,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Mockup Left */}
-          <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-orange/30 transition-colors duration-500">
+          <div className="order-2 lg:order-1 relative rounded-2xl overflow-hidden border border-white/10 bg-navy-light shadow-2xl aspect-[4/3] group hover:border-brand-blue-light/30 transition-colors duration-500">
             <div className="bg-navy-card px-4 py-3 flex items-center gap-3 border-b border-white/7">
               <div className="flex gap-2">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
@@ -338,7 +340,7 @@ export default function ProductsPage() {
                     <div className="text-xs font-semibold truncate">Adaeze Okonkwo</div>
                     <div className="text-[9px] text-muted truncate">CEO — Amala Sky Restaurant Group</div>
                   </div>
-                  <div className="text-[10px] font-mono font-bold text-brand-orange">98 🔥</div>
+                  <div className="text-[10px] font-mono font-bold text-brand-blue-light">98 🔥</div>
                 </div>
                 <div className="bg-navy-card border border-white/5 rounded-md p-3 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-900 to-navy border border-blue-500/20 flex items-center justify-center text-[10px] font-bold text-blue-400 shrink-0">TI</div>
@@ -346,7 +348,7 @@ export default function ProductsPage() {
                     <div className="text-xs font-semibold truncate">Tunde Idowu</div>
                     <div className="text-[9px] text-muted truncate">Founder — The Kitchen Lagos</div>
                   </div>
-                  <div className="text-[10px] font-mono font-bold text-brand-orange">94 🔥</div>
+                  <div className="text-[10px] font-mono font-bold text-brand-blue-light">94 🔥</div>
                 </div>
                 <div className="bg-navy-card border border-white/5 rounded-md p-3 flex items-center gap-3 opacity-70">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-900 to-navy border border-orange-500/20 flex items-center justify-center text-[10px] font-bold text-orange-400 shrink-0">CB</div>
@@ -379,7 +381,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">DeepReach</h2>
-            <div className="font-mono text-sm text-brand-orange mb-6 tracking-wide">// AI Lead Generation & Outreach</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// AI Lead Generation & Outreach</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               Finding the right prospect in Nigeria is harder than it should be. There&apos;s no clean B2B database. DeepReach fixes that — using AI to build, score, and reach laser-targeted prospect lists.
@@ -420,7 +422,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20">
           <div className="lg:col-span-1">
             <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight mb-6">
-              Why we <span className="text-brand-orange">build</span><br />what we build.
+              Why we <span className="text-brand-blue-light">build</span><br />what we build.
             </h2>
             <p className="text-muted text-lg font-light leading-relaxed">
               Every product in our portfolio started as a problem we couldn&apos;t solve for a client with existing tools. We built the solution internally, tested it, and brought it to market.
@@ -428,22 +430,22 @@ export default function ProductsPage() {
           </div>
           
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-orange/30 hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-blue-light/30 hover:-translate-y-1 transition-all duration-300">
               <div className="text-3xl mb-4">🔍</div>
               <h4 className="text-lg font-bold mb-3">Problem-First</h4>
               <p className="text-sm text-muted font-light leading-relaxed">Every product starts with a specific, documented problem we encountered across multiple real client engagements.</p>
             </div>
-            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-orange/30 hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-blue-light/30 hover:-translate-y-1 transition-all duration-300">
               <div className="text-3xl mb-4">🧪</div>
               <h4 className="text-lg font-bold mb-3">Agency-Tested</h4>
               <p className="text-sm text-muted font-light leading-relaxed">Before any product reaches market, it runs inside our own agency operations and across active client accounts.</p>
             </div>
-            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-orange/30 hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-blue-light/30 hover:-translate-y-1 transition-all duration-300">
               <div className="text-3xl mb-4">🌍</div>
               <h4 className="text-lg font-bold mb-3">African-Native</h4>
               <p className="text-sm text-muted font-light leading-relaxed">We don&apos;t simply localise Western tools. We build from the ground up tailored for Nigerian market dynamics.</p>
             </div>
-            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-orange/30 hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-navy-card border border-white/7 rounded-2xl p-8 hover:border-brand-blue-light/30 hover:-translate-y-1 transition-all duration-300">
               <div className="text-3xl mb-4">🔗</div>
               <h4 className="text-lg font-bold mb-3">Ecosystem-Connected</h4>
               <p className="text-sm text-muted font-light leading-relaxed">All products are designed to interoperate smoothly, forming an integrated growth stack for businesses.</p>

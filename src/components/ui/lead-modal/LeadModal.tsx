@@ -29,9 +29,7 @@ const leadSchema = z.object({
   message: z.string().min(10, "Please provide more context"),
   referralSource: z.string().min(1, "Referral source is required"),
   contactPreference: z.string().min(1, "Contact preference is required"),
-  agreement: z.literal(true, {
-    errorMap: () => ({ message: "You must agree to be contacted" }),
-  }),
+  agreement: z.boolean().refine((val) => val === true, "You must agree to be contacted"),
 });
 
 type LeadFormData = z.infer<typeof leadSchema>;
@@ -119,11 +117,11 @@ export function LeadModal({ isOpen, onClose, preselect }: LeadModalProps) {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 40 }}
-        className="w-full max-w-2xl bg-navy-card rounded-2xl border border-white/10 shadow-2xl relative overflow-hidden"
+        className="w-full max-w-2xl bg-navy-card rounded-2xl border border-white/10 shadow-2xl relative flex flex-col max-h-[95vh] md:max-h-[90vh] overflow-hidden"
       >
         {/* Progress Bar */}
         {!isSuccess && (
-          <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-white/5 z-20">
             <motion.div
               initial={{ width: "25%" }}
               animate={{ width: `${(step / 4) * 100}%` }}
@@ -134,12 +132,12 @@ export function LeadModal({ isOpen, onClose, preselect }: LeadModalProps) {
 
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-muted hover:text-white hover:bg-white/10 rounded-lg transition-colors z-10"
+          className="absolute top-4 right-4 p-2 text-muted hover:text-white hover:bg-white/10 rounded-lg transition-colors z-20"
         >
           <X size={20} />
         </button>
 
-        <div className="p-8 md:p-12">
+        <div className="p-6 md:p-12 overflow-y-auto">
           {!isSuccess && (
             <div className="mb-8">
               <h3 className="text-xl md:text-2xl font-display font-extrabold text-white">

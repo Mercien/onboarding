@@ -2,19 +2,19 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
 export function ProductsPreview() {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" }
+      transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" as const }
     })
   };
 
@@ -28,12 +28,12 @@ export function ProductsPreview() {
           className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16"
         >
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 bg-brand-blue-light/10 border border-brand-blue-light/20 text-brand-blue-light px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
               <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
               Our Products
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tighter text-white leading-tight">
-              We don&apos;t just build<br/>strategies. We build <span className="text-brand-orange">tools.</span>
+              We don&apos;t just build<br/>strategies. We build <span className="text-brand-blue-light">tools.</span>
             </h2>
           </div>
           <p className="text-muted max-w-sm text-sm font-light leading-relaxed">
@@ -47,7 +47,7 @@ export function ProductsPreview() {
           className="grid grid-cols-1 lg:grid-cols-[1fr,320px] gap-1 mb-1"
         >
           {/* Main Card */}
-          <div className="bg-navy-card border border-white/7 rounded-2xl lg:rounded-tl-2xl lg:rounded-bl-none lg:rounded-r-none p-10 md:p-12 relative overflow-hidden group hover:border-brand-orange/30 transition-colors">
+          <div className="bg-navy-card border border-white/7 rounded-2xl lg:rounded-tl-2xl lg:rounded-bl-none lg:rounded-r-none p-10 md:p-12 relative overflow-hidden group hover:border-brand-blue-light/30 transition-colors">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-orange to-brand-gold" />
             <div className="absolute top-[-100px] right-[-100px] w-80 h-80 bg-[radial-gradient(circle,rgba(242,138,2,0.1)_0%,transparent_70%)] rounded-full pointer-events-none" />
             
@@ -61,7 +61,7 @@ export function ProductsPreview() {
             </div>
             
             <h3 className="text-3xl font-display font-bold tracking-tight mb-2">FlowDesk Nexus</h3>
-            <div className="font-mono text-sm text-brand-orange mb-6">// CRM & Business Operations Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6">// CRM & Business Operations Platform</div>
             
             <p className="text-muted text-sm leading-relaxed font-light max-w-lg mb-8">
               The CRM built specifically for Nigerian businesses. Manage your customers, track your pipeline, automate your follow-ups, and measure your growth — all in one place, without the complexity of HubSpot or the cost of Salesforce.
@@ -82,7 +82,7 @@ export function ProductsPreview() {
           
           {/* Stats Panel */}
           <div className="bg-navy-light border border-white/7 rounded-2xl lg:rounded-tr-2xl lg:rounded-br-none lg:rounded-l-none p-10 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute bottom-[-10px] right-[-5px] font-display text-[120px] font-black text-brand-orange/5 leading-none select-none tracking-tighter">
+            <div className="absolute bottom-[-10px] right-[-5px] font-display text-[120px] font-black text-brand-blue-light/5 leading-none select-none tracking-tighter">
               FD
             </div>
             
@@ -90,17 +90,17 @@ export function ProductsPreview() {
               <div className="text-[10px] font-bold tracking-widest uppercase text-muted mb-8">Platform Overview</div>
               
               <div className="mb-8">
-                <div className="font-display font-extrabold text-5xl tracking-tighter">1<span className="text-brand-orange text-2xl">st</span></div>
+                <div className="font-display font-extrabold text-5xl tracking-tighter">1<span className="text-brand-blue-light text-2xl">st</span></div>
                 <div className="text-xs text-muted font-light mt-2">CRM built natively for Nigerian SMEs</div>
               </div>
               <div className="mb-8">
-                <div className="font-display font-extrabold text-5xl tracking-tighter">₦15k<span className="text-brand-orange text-3xl">+</span></div>
+                <div className="font-display font-extrabold text-5xl tracking-tighter">₦15k<span className="text-brand-blue-light text-3xl">+</span></div>
                 <div className="text-xs text-muted font-light mt-2">Starting price — massive fractional savings</div>
               </div>
             </div>
             
-            <Link href="https://crm.brandsdigitals.com.ng" target="_blank" className="mt-8 relative z-10 flex items-center justify-between bg-white/5 border border-white/10 p-3 rounded-lg hover:border-brand-orange/30 group transition-colors">
-              <span className="font-mono text-[10px] text-brand-orange tracking-wide">crm.brandsdigitals.com.ng</span>
+            <Link href="https://crm.brandsdigitals.com.ng" target="_blank" className="mt-8 relative z-10 flex items-center justify-between bg-white/5 border border-white/10 p-3 rounded-lg hover:border-brand-blue-light/30 group transition-colors">
+              <span className="font-mono text-[10px] text-brand-blue-light tracking-wide">crm.brandsdigitals.com.ng</span>
               <span className="text-muted group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
@@ -127,7 +127,7 @@ export function ProductsPreview() {
             </div>
             
             <h4 className="text-2xl font-display font-bold tracking-tight mb-1">AdForge</h4>
-            <div className="font-mono text-[11px] text-brand-orange mb-4">// AI Ad Creative Platform</div>
+            <div className="font-mono text-[11px] text-brand-blue-light mb-4">// AI Ad Creative Platform</div>
             
             <p className="text-muted text-sm font-light leading-relaxed mb-8 max-w-sm">
               Brief in. Multiple high-converting ad creatives out — in seconds. Uses AI to generate on-brand ad variations for Meta, Google, and TikTok.
@@ -152,7 +152,7 @@ export function ProductsPreview() {
             </div>
             
             <h4 className="text-2xl font-display font-bold tracking-tight mb-1">DeepReach</h4>
-            <div className="font-mono text-[11px] text-brand-orange mb-4">// AI Lead Generation & Outreach</div>
+            <div className="font-mono text-[11px] text-brand-blue-light mb-4">// AI Lead Generation & Outreach</div>
             
             <p className="text-muted text-sm font-light leading-relaxed mb-8 max-w-sm">
               Find, qualify, and reach your ideal prospects at scale. Uses AI to build targeted lead lists and automate personalised outreach sequences.

@@ -17,9 +17,9 @@ export function FounderSnippet() {
         >
           <div className="bg-navy-card border border-white/7 rounded-2xl overflow-hidden aspect-[4/5] flex items-end relative shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-navy-mid to-transparent opacity-60 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-navy-mid/80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-light/5 to-navy-mid/80" />
             
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-display font-extrabold text-[120px] text-brand-orange/10 select-none tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-display font-extrabold text-[120px] text-brand-blue-light/10 select-none tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
               ADO
             </div>
             
@@ -36,7 +36,7 @@ export function FounderSnippet() {
               <strong className="block font-display font-extrabold text-2xl text-white tracking-tight">
                 Mercien (Aanu Damilare Oke)
               </strong>
-              <span className="block text-sm text-brand-orange font-bold uppercase tracking-widest mt-1">
+              <span className="block text-sm text-brand-blue-light font-bold uppercase tracking-widest mt-1">
                 Founder & Lead Strategist
               </span>
             </div>
@@ -52,12 +52,12 @@ export function FounderSnippet() {
           transition={{ duration: 0.8 }}
           className="flex flex-col gap-8"
         >
-          <div className="w-12 h-12 bg-brand-orange/10 rounded-full flex items-center justify-center text-brand-orange">
+          <div className="w-12 h-12 bg-brand-blue-light/10 rounded-full flex items-center justify-center text-brand-blue-light">
             <Quote size={24} fill="currentColor" />
           </div>
 
           <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tighter text-white leading-tight">
-            Digital Transformation is about <span className="text-brand-orange">impact</span>, not just tools.
+            Digital Transformation is about <span className="text-brand-blue-light">impact</span>, not just tools.
           </h2>
 
           <p className="text-lg text-muted font-light leading-relaxed">
@@ -67,10 +67,10 @@ export function FounderSnippet() {
           </p>
 
           <div className="flex flex-col gap-4 mt-4">
-            <div className="flex items-center gap-4 text-sm font-medium text-white border-l-2 border-brand-orange pl-4">
+            <div className="flex items-center gap-4 text-sm font-medium text-white border-l-2 border-brand-blue-light pl-4">
               &quot;We don&apos;t build projects. We build assets that earn.&quot;
             </div>
-            <div className="flex items-center gap-4 text-sm font-medium text-white border-l-2 border-brand-orange pl-4">
+            <div className="flex items-center gap-4 text-sm font-medium text-white border-l-2 border-brand-blue-light pl-4">
               &quot;Strategy is only as good as its slowest execution.&quot;
             </div>
           </div>

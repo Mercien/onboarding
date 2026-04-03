@@ -42,12 +42,12 @@ export function WhyUs() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
           <div className="max-w-2xl">
-            <h5 className="section-label text-brand-orange font-bold uppercase tracking-widest text-xs mb-4">
+            <h5 className="section-label text-brand-blue-light font-bold uppercase tracking-widest text-xs mb-4">
               Why Brands Digitals
             </h5>
             <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter text-white leading-tight">
               We dont just <span className="text-muted">Strategise</span>, <br />
-              We <span className="text-brand-orange">Transform</span>
+              We <span className="text-brand-blue-light">Transform</span>
             </h2>
           </div>
           <p className="text-muted max-w-sm text-sm font-light leading-relaxed">
@@ -69,8 +69,8 @@ export function WhyUs() {
                 className="group p-10 bg-navy-light hover:bg-navy-card transition-colors duration-300 relative overflow-hidden"
               >
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-brand-orange scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                <div className="w-12 h-12 bg-white/4 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-orange/10 group-hover:text-brand-orange transition-colors">
-                  <Icon size={24} className="text-muted group-hover:text-brand-orange" />
+                <div className="w-12 h-12 bg-white/4 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue-light/10 group-hover:text-brand-blue-light transition-colors">
+                  <Icon size={24} className="text-muted group-hover:text-brand-blue-light" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-3 tracking-tight">
                   {card.title}

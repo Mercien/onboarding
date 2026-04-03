@@ -12,7 +12,7 @@ export function PostCTA() {
     <section className="bg-navy py-32 px-6 md:px-16 border-t border-white/7">
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tighter text-white leading-tight mb-6 mt-4">
-          Want results <span className="text-brand-orange">like these?</span>
+          Want results <span className="text-brand-blue-light">like these?</span>
         </h2>
         <p className="text-muted text-lg md:text-xl font-light leading-relaxed max-w-2xl mb-12">
           Your transformation starts with a single conversation. Let&apos;s build your next success story.

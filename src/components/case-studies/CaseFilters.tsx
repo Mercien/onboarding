@@ -27,7 +27,7 @@ export function CaseFilters({ activeFilter, onFilterChange }: CaseFiltersProps) 
           className={cn(
             "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-200",
             activeFilter === filter
-              ? "bg-brand-orange/10 border-brand-orange text-brand-orange"
+              ? "bg-brand-blue-light/10 border-brand-blue-light text-brand-blue-light"
               : "border-white/7 text-muted hover:border-white/20 hover:text-white"
           )}
         >

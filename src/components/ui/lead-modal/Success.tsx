@@ -12,14 +12,14 @@ export function Success({ onReset }: { onReset: () => void }) {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", damping: 15, stiffness: 200 }}
-        className="w-20 h-20 bg-brand-orange/20 rounded-full flex items-center justify-center mb-8"
+        className="w-20 h-20 bg-brand-blue-light/20 rounded-full flex items-center justify-center mb-8"
       >
         <motion.div
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Check size={40} className="text-brand-orange" />
+          <Check size={40} className="text-brand-blue-light" />
         </motion.div>
       </motion.div>
 

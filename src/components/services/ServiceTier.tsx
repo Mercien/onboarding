@@ -33,11 +33,11 @@ export function ServiceTier({
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20 items-start">
           <div className="relative">
-            <span className="font-display font-extrabold text-[120px] text-brand-orange/10 absolute -top-20 -left-10 select-none">
+            <span className="font-display font-extrabold text-[120px] text-brand-blue-light/10 absolute -top-20 -left-10 select-none">
               {num}
             </span>
             <div className="relative z-10">
-              <div className="inline-block px-3 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded text-[10px] font-bold uppercase tracking-widest text-brand-orange mb-6">
+              <div className="inline-block px-3 py-1 bg-brand-blue-light/10 border border-brand-blue-light/20 rounded text-[10px] font-bold uppercase tracking-widest text-brand-blue-light mb-6">
                 {tag}
               </div>
               <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tighter text-white mb-6">

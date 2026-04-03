@@ -8,6 +8,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { LeadModal } from "@/components/ui/lead-modal/LeadModal";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -21,6 +22,8 @@ const NAV_LINKS = [
 
 export function Nav() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  
   const pathname = usePathname();
   const { scrollY } = useScroll();
   
@@ -60,8 +63,8 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium tracking-wide transition-colors duration-200 hover:text-white",
-                  isActive ? "text-white" : "text-muted"
+                  "text-sm font-medium tracking-wide transition-colors duration-200 hover:text-brand-blue-light",
+                  isActive ? "text-brand-blue-light" : "text-muted"
                 )}
               >
                 {link.label}
@@ -71,7 +74,7 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="primary" size="sm" className="hidden md:flex">
+          <Button variant="primary" size="sm" className="hidden md:flex" onClick={() => setIsModalOpen(true)}>
             Book a Discovery Call
           </Button>
 
@@ -94,7 +97,7 @@ export function Nav() {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed inset-0 z-[190] bg-navy pt-[80px] px-6 flex flex-col lg:hidden"
           >
-            <div className="flex flex-col gap-2 mt-8">
+            <div className="flex flex-col gap-1 mt-4">
               {NAV_LINKS.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -103,7 +106,7 @@ export function Nav() {
                     href={link.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "text-2xl font-display font-bold py-4 border-b border-white/7 transition-colors",
+                      "text-xl md:text-2xl font-display font-bold py-3 border-b border-white/7 transition-colors",
                       isActive ? "text-white" : "text-muted"
                     )}
                   >
@@ -113,14 +116,16 @@ export function Nav() {
               })}
             </div>
             
-            <div className="mt-auto mb-10">
-              <Button variant="primary" size="lg" className="w-full">
+            <div className="mt-auto mb-8 pt-4">
+              <Button variant="primary" size="lg" className="w-full" onClick={() => setIsModalOpen(true)}>
                 Book a Discovery Call
               </Button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <LeadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

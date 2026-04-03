@@ -48,7 +48,7 @@ export function Timeline() {
             <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-brand-orange shadow-[0_0_0_4px_rgba(242,138,2,0.2)]" />
             
             <div className="text-right pt-0.5">
-              <span className="font-display font-bold text-sm text-brand-orange leading-none uppercase tracking-widest">
+              <span className="font-display font-bold text-sm text-brand-blue-light leading-none uppercase tracking-widest">
                 {item.year}
               </span>
             </div>

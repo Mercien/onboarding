@@ -61,7 +61,7 @@ export default function CaseStudiesPage() {
       <Nav />
       {/* Page Hero */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 overflow-hidden border-b border-white/7 bg-gradient-to-b from-navy to-navy-mid">
-        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-orange/13 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-blue-light/13 rounded-full blur-[100px] pointer-events-none" />
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ export default function CaseStudiesPage() {
             <div>
               <div className="section-label">Case Studies</div>
               <h1 className="text-5xl md:text-8xl font-display font-extrabold tracking-tighter leading-[0.9] mt-6">
-                Venture <span className="text-brand-orange">Impact</span> <br /> 
+                Venture <span className="text-brand-blue-light">Impact</span> <br /> 
                 in <span className="text-muted">Real-Time</span>.
               </h1>
             </div>
@@ -98,7 +98,7 @@ export default function CaseStudiesPage() {
           {filteredCases.length === 0 && (
             <div className="py-40 text-center">
               <p className="text-muted text-xl font-light">
-                More case studies in <span className="text-brand-orange font-bold">{activeFilter}</span> coming soon.
+                More case studies in <span className="text-brand-blue-light font-bold">{activeFilter}</span> coming soon.
               </p>
             </div>
           )}
@@ -108,7 +108,7 @@ export default function CaseStudiesPage() {
       {/* CTA Final */}
       <section className="py-24 px-6 text-center border-t border-white/7 bg-navy">
         <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter text-white mb-8">
-          Want results <span className="text-brand-orange">like these?</span>
+          Want results <span className="text-brand-blue-light">like these?</span>
         </h2>
         <p className="text-muted text-lg mb-12 max-w-2xl mx-auto font-light">
           Your transformation starts with a single conversation. Let&apos;s build your next success story.

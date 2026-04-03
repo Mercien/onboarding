@@ -6,7 +6,7 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { ServicesPreview } from "@/components/sections/ServicesPreview";
 import { ProductsPreview } from "@/components/sections/ProductsPreview";
 import { FounderSnippet } from "@/components/sections/FounderSnippet";
-import { CtaBand } from "@/components/sections/CtaBand";
+import { PostCTA } from "@/components/sections/PostCTA";
 
 export default function Home() {
   return (
@@ -18,9 +18,8 @@ export default function Home() {
       <ServicesPreview />
       <ProductsPreview />
       <FounderSnippet />
-      <CtaBand />
+      <PostCTA />
       <Footer />
     </main>
   );
 }
-

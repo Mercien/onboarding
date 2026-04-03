@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "Brands Digitals Agency | Digital Transformation for African Startups",
   description: "Digital transformation agency based in Lagos, Nigeria, serving funded startups and scaleups across Africa.",
   metadataBase: new URL("https://brandsdigitals.com.ng"),
+  verification: {
+    google: "_dDnZ2xCZA3LV71Ppm7ecl14IsDWApXgqAsnk8Im7Xc",
+  },
 };
 
 export default function RootLayout({
@@ -34,9 +37,10 @@ export default function RootLayout({
   return (
       <html
         lang="en"
+        suppressHydrationWarning
         className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable} h-full antialiased`}
       >
-      <body className="min-h-full flex flex-col font-body bg-navy text-foreground">
+      <body suppressHydrationWarning className="min-h-full flex flex-col font-body bg-navy text-foreground">
         {children}
       </body>
     </html>

@@ -38,7 +38,8 @@ export default function AboutPage() {
       <Nav />
       {/* About Hero */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 overflow-hidden border-b border-white/7 bg-gradient-to-b from-navy to-navy-mid">
-        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-orange/13 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-blue-light/15 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-100px] left-[-80px] w-[500px] h-[500px] bg-brand-blue-light/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -48,7 +49,7 @@ export default function AboutPage() {
             <div>
               <div className="section-label">Founders&apos; Story</div>
               <h1 className="text-5xl md:text-8xl font-display font-extrabold tracking-tighter leading-[0.9] mt-6">
-                Built for <span className="text-brand-orange">Impact</span>. Driven by <span className="text-muted">Scale</span>.
+                Built for <span className="text-brand-blue-light">Impact</span>. Driven by <span className="text-brand-blue-light">Scale</span>.
               </h1>
             </div>
             <div className="max-w-md pb-4">
@@ -90,9 +91,9 @@ export default function AboutPage() {
           >
             <div className="bg-navy-card border border-white/7 rounded-2xl overflow-hidden aspect-[3/4] flex items-end relative shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-navy-mid to-transparent opacity-60 z-10" />
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-orange/5 to-navy-mid/80" />
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-light/5 to-navy-mid/80" />
               
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-display font-extrabold text-[120px] text-brand-orange/10 select-none tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-display font-extrabold text-[120px] text-brand-blue-light/10 select-none tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
                 ADO
               </div>
               
@@ -110,7 +111,7 @@ export default function AboutPage() {
                   <strong className="block font-display font-extrabold text-2xl text-white tracking-tight">
                     Mercien (Aanu Damilare Oke)
                   </strong>
-                  <em className="block text-sm text-brand-orange font-bold uppercase tracking-widest mt-1 not-italic">
+                  <em className="block text-sm text-brand-blue-light font-bold uppercase tracking-widest mt-1 not-italic">
                     Lead Transformation Strategist
                   </em>
                 </div>
@@ -129,7 +130,7 @@ export default function AboutPage() {
           <div className="max-w-2xl mb-20">
             <h5 className="section-label">Our Journey</h5>
             <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter text-white leading-tight">
-              Years of <span className="text-brand-orange">Building</span> <br />
+              Years of <span className="text-brand-blue-light">Building</span> <br />
               Venture <span className="text-muted">Legacy</span>.
             </h2>
           </div>
@@ -143,7 +144,7 @@ export default function AboutPage() {
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h5 className="section-label mx-auto">Core Principles</h5>
             <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter text-white leading-tight mt-4">
-              Our <span className="text-brand-orange">Guiding</span> Truths.
+              Our <span className="text-brand-blue-light">Guiding</span> Truths.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -161,7 +162,7 @@ export default function AboutPage() {
             <div className="max-w-2xl">
               <h5 className="section-label">Expertise</h5>
               <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tighter text-white leading-tight mt-4">
-                Architecture Meets <br /> <span className="text-brand-orange">Digital Engineering</span>.
+                Architecture Meets <br /> <span className="text-brand-blue-light">Digital Engineering</span>.
               </h2>
             </div>
             <p className="text-lg text-muted font-light leading-relaxed pt-12">

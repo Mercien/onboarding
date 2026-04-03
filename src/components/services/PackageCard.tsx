@@ -30,8 +30,8 @@ export function PackageCard({
       className={cn(
         "pkg-card flex flex-col p-8 rounded-2xl border transition-all duration-300 relative",
         isFeatured
-          ? "bg-gradient-to-br from-navy-light to-navy-card border-brand-orange shadow-xl shadow-brand-orange/5"
-          : "bg-navy-card border-white/7 hover:border-white/20"
+          ? "bg-gradient-to-br from-navy-light to-navy-card border-brand-blue-light shadow-xl shadow-brand-orange/5"
+          : "bg-navy-card border-white/7 hover:border-brand-blue/50 hover:shadow-2xl hover:shadow-brand-blue/10"
       )}
     >
       {isFeatured && (
@@ -51,7 +51,7 @@ export function PackageCard({
 
       {price && (
         <div className="mb-6">
-          <span className="font-display font-extrabold text-3xl text-brand-orange tracking-tighter">
+          <span className="font-display font-extrabold text-3xl text-brand-blue-light tracking-tighter">
             {price}
           </span>
           {priceSub && (
@@ -67,7 +67,7 @@ export function PackageCard({
       <ul className="flex-1 space-y-4 mb-8">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <Check size={14} className="text-brand-orange mt-1 shrink-0" />
+            <Check size={14} className="text-brand-blue-light mt-1 shrink-0" />
             <span className="text-xs text-muted-lt font-light leading-relaxed">
               {feature}
             </span>

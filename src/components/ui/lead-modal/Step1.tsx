@@ -3,7 +3,6 @@
 import * as React from "react";
 import { useFormContext } from "react-hook-form";
 import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input"; // I'll need to create this
 
 export function Step1({ onNext }: { onNext: () => void }) {
   const { register, formState: { errors } } = useFormContext();
@@ -16,7 +15,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
           <input
             {...register("firstName")}
             placeholder="John"
-            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
           />
           {errors.firstName && <span className="text-xs text-red-500">{errors.firstName.message as string}</span>}
         </div>
@@ -25,7 +24,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
           <input
             {...register("lastName")}
             placeholder="Doe"
-            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
           />
           {errors.lastName && <span className="text-xs text-red-500">{errors.lastName.message as string}</span>}
         </div>
@@ -37,7 +36,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
           {...register("email")}
           type="email"
           placeholder="john@company.com"
-          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
         />
         {errors.email && <span className="text-xs text-red-500">{errors.email.message as string}</span>}
       </div>
@@ -47,7 +46,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
         <input
           {...register("phone")}
           placeholder="+234 xxx xxx xxxx"
-          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+          className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
         />
       </div>
 
@@ -57,7 +56,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
           <input
             {...register("company")}
             placeholder="TechFlow Ltd"
-            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
           />
           {errors.company && <span className="text-xs text-red-500">{errors.company.message as string}</span>}
         </div>
@@ -66,7 +65,7 @@ export function Step1({ onNext }: { onNext: () => void }) {
           <input
             {...register("role")}
             placeholder="CEO, Founder, etc."
-            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-orange outline-none transition-all"
+            className="w-full bg-navy-light border border-white/12 rounded-lg px-4 py-3 text-white placeholder:text-muted focus:border-brand-blue-light outline-none transition-all"
           />
           {errors.role && <span className="text-xs text-red-500">{errors.role.message as string}</span>}
         </div>

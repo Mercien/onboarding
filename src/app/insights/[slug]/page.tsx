@@ -25,7 +25,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
       <main className="min-h-screen bg-navy text-foreground flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-display font-extrabold text-white mb-4">Post not found.</h1>
-          <Link href="/insights" className="text-brand-orange hover:underline font-bold">
+          <Link href="/insights" className="text-brand-blue-light hover:underline font-bold">
             ← Back to Insights
           </Link>
         </div>
@@ -39,7 +39,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
       {/* Post Hero */}
       <section className="relative pt-40 pb-20 px-6 md:px-16 overflow-hidden border-b border-white/7 bg-gradient-to-b from-navy to-navy-mid">
         <div className="max-w-4xl mx-auto">
-          <Link href="/insights" className="inline-flex items-center gap-2 text-xs font-bold text-brand-orange uppercase tracking-widest mb-8 hover:translate-x-[-4px] transition-transform">
+          <Link href="/insights" className="inline-flex items-center gap-2 text-xs font-bold text-brand-blue-light uppercase tracking-widest mb-8 hover:translate-x-[-4px] transition-transform">
             <ArrowLeft size={14} /> Back to Insights
           </Link>
           
@@ -72,7 +72,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
       {/* Main Content Area */}
       <section className="py-24 px-6 md:px-16">
         <div className="max-w-3xl mx-auto">
-          <div className="prose prose-invert prose-brand max-w-none prose-p:text-muted prose-p:font-light prose-p:leading-relaxed prose-headings:font-display prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-brand-orange">
+          <div className="prose prose-invert prose-brand max-w-none prose-p:text-muted prose-p:font-light prose-p:leading-relaxed prose-headings:font-display prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-brand-blue-light">
             <PortableText 
               value={post.body} 
               components={{
@@ -113,7 +113,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
 
           <div className="mt-20 pt-12 border-t border-white/7 flex flex-col md:flex-row items-center gap-8">
             {post.author.image && (
-              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-orange/30">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-brand-blue-light/30">
                 <Image
                   src={urlForImage(post.author.image).url()}
                   alt={post.author.name}
@@ -124,7 +124,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
               </div>
             )}
             <div>
-              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.2em] mb-1 block">Written By</span>
+              <span className="text-[10px] font-bold text-brand-blue-light uppercase tracking-[0.2em] mb-1 block">Written By</span>
               <h4 className="text-xl font-bold text-white mb-2">{post.author.name}</h4>
               <div className="text-sm text-muted font-light leading-relaxed">
                 <PortableText value={post.author.bio} />

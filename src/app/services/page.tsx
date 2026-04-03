@@ -21,13 +21,11 @@ const TIERS = [
       {
         name: "Discovery Audit",
         tagline: "Uncover immediate leaks and opportunities.",
-        price: "₦150k",
         features: ["Tech stack review", "UX/UI friction audit", "Quick-win roadmap", "Competitive gap analysis"]
       },
       {
         name: "Transformation Blueprint",
         tagline: "Complete 12-month growth roadmap.",
-        price: "₦350k",
         isFeatured: true,
         features: ["Full data attribution setup", "Channel strategy (Search/Social)", "Revenue projections", "Operational hire list"]
       }
@@ -43,13 +41,11 @@ const TIERS = [
       {
         name: "Identity Refresh",
         tagline: "Modernize your visual language.",
-        price: "₦450k",
         features: ["New logo & brand guidelines", "Typography & color system", "Social media templates", "Pitch deck design"]
       },
       {
         name: "Premium Presence",
         tagline: "High-performance brand & website.",
-        price: "₦1.2M",
         isFeatured: true,
         features: ["Custom Next.js website", "Copywriting for conversion", "Identity system extension", "SEO foundation launch"]
       }
@@ -65,15 +61,11 @@ const TIERS = [
       {
         name: "Base Growth",
         tagline: "Start your acquisition engine.",
-        price: "₦250k",
-        priceSub: "/mo",
         features: ["1 Primary ad channel", "Basic conversion tracking", "Weekly performance sync", "Creative ad testing"]
       },
       {
         name: "Scale Engine",
         tagline: "Aggressive multi-channel growth.",
-        price: "₦600k+",
-        priceSub: "/mo",
         isFeatured: true,
         features: ["Multi-channel (AdWords/Meta/LinkedIn)", "Content & SEO ops", "Funnel optimization", "Monthly board-ready report"]
       }
@@ -89,13 +81,11 @@ const TIERS = [
       {
         name: "Stack Alignment",
         tagline: "Fix your broken systems.",
-        price: "₦300k",
         features: ["CRM cleanup & migration", "Auto-attribution setup", "Sales/Marketing handoff", "Basic nurture flows"]
       },
       {
         name: "RevOps Engine",
         tagline: "Automate your revenue growth.",
-        price: "₦750k",
         isFeatured: true,
         features: ["Full GHL/HubSpot automation", "Custom lead scoring", "Predictive reporting", "Lifetime value (LTV) models"]
       }
@@ -111,14 +101,12 @@ const TIERS = [
       {
         name: "The Launchpad",
         tagline: "Get to market, fast.",
-        price: "₦2M",
         isFeatured: true,
         features: ["Core brand identity", "High-converting LP", "Lead capture setup", "30-Day launch ad campaign"]
       },
       {
         name: "Launchpad Plus",
         tagline: "The venture-ready setup.",
-        price: "₦3.5M",
         features: ["Identity + Content Library", "Full Next.js ecosystem", "GHL Automation stack", "90-Day scale strategy"]
       }
     ]
@@ -138,7 +126,8 @@ export default function ServicesPage() {
       <Nav />
       {/* Page Hero */}
       <section className="relative pt-40 pb-24 px-6 md:px-16 overflow-hidden border-b border-white/7 bg-gradient-to-b from-navy to-navy-mid">
-        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-orange/13 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[-100px] right-[-80px] w-[500px] h-[500px] bg-brand-blue-light/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-50px] left-[-100px] w-[600px] h-[600px] bg-brand-blue-light/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -148,7 +137,7 @@ export default function ServicesPage() {
             <div className="lg:col-span-7">
               <div className="section-label">All Services</div>
               <h1 className="text-[40px] sm:text-5xl md:text-6xl lg:text-[80px] font-display font-extrabold tracking-tighter leading-[1] md:leading-[0.9] mt-6 break-words max-w-full">
-                Premium <span className="text-brand-orange">Digital</span> <br /> Capabilities.
+                Premium <span className="text-brand-blue-light">Digital</span> <br /> Capabilities.
               </h1>
             </div>
             <div className="lg:col-span-5 pb-2 lg:pb-4">
@@ -158,7 +147,7 @@ export default function ServicesPage() {
               <div className="flex gap-4 mt-8">
                 <div className="flex -space-x-2">
                   {[1,2,3].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-navy bg-brand-orange/20 flex items-center justify-center text-[10px] font-bold text-brand-orange">
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-navy bg-brand-blue-light/20 flex items-center justify-center text-[10px] font-bold text-brand-blue-light">
                       {i}
                     </div>
                   ))}
@@ -206,7 +195,7 @@ export default function ServicesPage() {
                     "Performance Dashboards"
                   ].map((d, dIdx) => (
                     <li key={dIdx} className="flex items-center gap-3 text-xs text-muted font-light">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-orange/50" /> {d}
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-blue-light/50" /> {d}
                     </li>
                   ))}
                 </ul>

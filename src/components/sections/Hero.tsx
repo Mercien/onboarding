@@ -45,25 +45,26 @@ export function Hero() {
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-navy/50 via-navy/80 to-navy pointer-events-none" />
 
       {/* Background Orbs */}
-      <div className="absolute top-[-200px] right-[-150px] w-[700px] h-[700px] bg-brand-orange/12 rounded-full blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-100px] left-[20%] w-[400px] h-[400px] bg-brand-gold/6 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute top-[-200px] right-[-150px] w-[700px] h-[700px] bg-brand-blue-light/12 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-100px] left-[10%] w-[600px] h-[600px] bg-brand-blue-light/10 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-[30%] left-[-150px] w-[400px] h-[400px] bg-brand-blue-dark/20 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
           className="flex flex-col items-start"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full mb-8">
-            <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-orange">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-blue-light/10 border border-brand-blue-light/20 rounded-full mb-8">
+            <span className="w-1.5 h-1.5 bg-brand-blue-light rounded-full animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-blue-light">
               Digital Transformation Agency
             </span>
           </div>
 
           <h1 className="text-[32px] sm:text-4xl md:text-6xl lg:text-[80px] font-display font-extrabold tracking-tighter leading-[1.05] md:leading-[0.9] mb-8 max-w-[1020px] break-words">
-            We Build <span className="text-brand-orange">Digital Systems</span> That Scales Your{" "}
+            We Build <span className="text-brand-blue-light">Digital Systems</span> That Scales Your{" "}
             <span className="inline-grid align-bottom max-w-full">
               <AnimatePresence mode="popLayout">
                 <motion.span

@@ -37,16 +37,16 @@ export function FaqAccordion() {
         <div key={idx} className="border-b border-white/7">
           <button
             onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-            className="w-full py-6 flex justify-between items-center text-left group hover:text-brand-orange transition-colors"
+            className="w-full py-6 flex justify-between items-center text-left group hover:text-brand-blue-light transition-colors"
           >
-            <span className="text-lg font-bold text-white group-hover:text-brand-orange transition-colors">
+            <span className="text-lg font-bold text-white group-hover:text-brand-blue-light transition-colors">
               {faq.q}
             </span>
             <Plus
               size={20}
               className={cn(
                 "text-muted transition-transform duration-300",
-                openIdx === idx && "rotate-45 text-brand-orange"
+                openIdx === idx && "rotate-45 text-brand-blue-light"
               )}
             />
           </button>

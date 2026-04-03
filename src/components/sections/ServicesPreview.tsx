@@ -50,11 +50,11 @@ export function ServicesPreview() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
           <div className="max-w-2xl">
-            <h5 className="section-label text-brand-orange font-bold uppercase tracking-widest text-xs mb-4">
+            <h5 className="section-label text-brand-blue-light font-bold uppercase tracking-widest text-xs mb-4">
               Our Expertise
             </h5>
             <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tighter text-white leading-tight">
-              Diverse Layers of <span className="text-brand-orange">Digital</span> <br />
+              Diverse Layers of <span className="text-brand-blue-light">Digital</span> <br />
               <span className="text-muted">Transformation</span>.
             </h2>
           </div>
@@ -68,12 +68,12 @@ export function ServicesPreview() {
             <Link
               key={svc.id}
               href={`/services#${svc.id}`}
-              className="group p-10 bg-navy-card hover:bg-navy-light border border-white/7 hover:border-brand-orange/30 rounded-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full hover:translate-y-[-4px] shadow-lg hover:shadow-black/40"
+              className="group p-10 bg-navy-card hover:bg-navy-light border border-white/7 hover:border-brand-blue-light/30 rounded-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between h-full hover:translate-y-[-4px] shadow-lg hover:shadow-black/40"
             >
               <div className="absolute top-0 left-0 w-1 h-full bg-brand-orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
               
               <div>
-                <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.2em] mb-4 block opacity-70 group-hover:opacity-100">
+                <span className="text-[10px] font-bold text-brand-blue-light uppercase tracking-[0.2em] mb-4 block opacity-70 group-hover:opacity-100">
                   {svc.num}
                 </span>
                 <h4 className="text-xl font-bold text-white mb-4 tracking-tight">
@@ -84,7 +84,7 @@ export function ServicesPreview() {
                 </p>
               </div>
 
-              <div className="mt-8 flex items-center gap-2 group-hover:gap-4 transition-all duration-300 text-xs font-bold text-brand-orange uppercase tracking-widest">
+              <div className="mt-8 flex items-center gap-2 group-hover:gap-4 transition-all duration-300 text-xs font-bold text-brand-blue-light uppercase tracking-widest">
                 Learn More <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
             </Link>

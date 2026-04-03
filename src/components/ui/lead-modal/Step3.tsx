@@ -60,7 +60,7 @@ export function Step3({ onNext, onBack }: { onNext: () => void; onBack: () => vo
               className={cn(
                 "p-4 border rounded-xl text-left transition-all duration-200 flex items-center gap-3",
                 currentService === svc.id
-                  ? "bg-brand-orange/10 border-brand-orange shadow-[0_4px_12px_rgba(242,138,2,0.1)]"
+                  ? "bg-brand-blue-light/10 border-brand-blue-light shadow-[0_4px_12px_rgba(242,138,2,0.1)]"
                   : "bg-navy-light border-white/7 hover:border-white/20"
               )}
             >
@@ -88,7 +88,7 @@ export function Step3({ onNext, onBack }: { onNext: () => void; onBack: () => vo
               className={cn(
                 "p-3 border rounded-lg text-center transition-all text-xs font-medium",
                 currentBudget === budget
-                  ? "bg-brand-orange text-white border-brand-orange"
+                  ? "bg-brand-orange text-white border-brand-blue-light"
                   : "bg-navy-light border-white/7 text-muted hover:border-white/20"
               )}
             >
@@ -110,7 +110,7 @@ export function Step3({ onNext, onBack }: { onNext: () => void; onBack: () => vo
               className={cn(
                 "px-4 py-2 border rounded-full transition-all text-xs font-medium",
                 selectedGoals.includes(goal.id)
-                  ? "bg-brand-orange/10 border-brand-orange text-brand-orange"
+                  ? "bg-brand-blue-light/10 border-brand-blue-light text-brand-blue-light"
                   : "bg-navy-light border-white/7 text-muted hover:border-white/20"
               )}
             >
