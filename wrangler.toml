@@ -1,0 +1,19 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "brands-digitals-agency"
+pages_build_output_dir = ".vercel/output/static"
+compatibility_date = "2024-04-14"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Public Sanity CMS Configuration
+NEXT_PUBLIC_SANITY_PROJECT_ID = "ibp3ucly"
+NEXT_PUBLIC_SANITY_DATASET = "production"
+NEXT_PUBLIC_SANITY_API_VERSION = "2026-04-01"
+
+# Email Configuration
+NOTIFICATION_EMAIL = "hello@brandsdigitals.com.ng"
+
+# Sensitive variables (Included as requested, but recommended to move to Cloudflare Dashboard Secrets)
+SANITY_API_READ_TOKEN = "skUwrf0uCULf9df7n54YawZUI4CL77qTcE3vWMbKd0ENkIeyOfShyEi9f1Y7MqqWrcTTiOyBEGfRWeDA4h6lHEoI8n7IkoqeZ0VsT8JrdK3hW4lKcDPDloWdI5uTs3DM9wfDlc4RiY4Blz5pdkv2aD97RKttVGLBLeRktG3sAsx6ZSFGVM8N"
+RESEND_API_KEY = "re_YYMemanC_KPYoydxxgEjozVSNgBF79iYx"
+GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/..."
