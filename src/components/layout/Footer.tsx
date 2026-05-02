@@ -1,17 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Globe, Send, Briefcase, Camera } from "lucide-react";
+import { Globe } from "lucide-react";
+import { LinkedinIcon as Linkedin, FacebookIcon as Facebook, InstagramIcon as Instagram, TwitterIcon as Twitter, ClutchIcon as Clutch } from "@/components/ui/SocialIcons";
 import { cn } from "@/lib/utils";
 
 
 const FOOTER_LINKS = {
   Services: [
-    { label: "Digital Audit & Strategy", href: "/services#tier-1" },
-    { label: "Brand & Digital Presence", href: "/services#tier-2" },
-    { label: "Visibility & Demand Engine", href: "/services#tier-3" },
-    { label: "Conversion & Growth Systems", href: "/services#tier-4" },
-    { label: "Market Launch Accelerator", href: "/services#tier-5" },
-    { label: "Deep Partnership & Support", href: "/services#tier-6" },
+    { label: "SEO Services", href: "/services/seo" },
+    { label: "Website Design", href: "/services/website-design" },
+    { label: "Social Media Management", href: "/services/social-media-management" },
+    { label: "Marketing Automation", href: "/services/marketing-automation" },
+    { label: "CRM Setup", href: "/services/crm-setup" },
+    { label: "Paid Media", href: "/services/paid-media" },
+    { label: "Email Marketing", href: "/services/email-marketing" },
+    { label: "Content Marketing", href: "/services/content-marketing" },
   ],
   "Quick Links": [
     { label: "Home", href: "/" },
@@ -56,10 +59,17 @@ export function Footer() {
               Lagos, Nigeria · Serving Africa & Beyond
             </p>
             <div className="flex gap-3 mt-8">
-              {[Briefcase, Camera, Send, Globe].map((Icon, idx) => (
+              {[
+                { icon: Linkedin, href: "https://ng.linkedin.com/company/brands-digitals-agency" },
+                { icon: Facebook, href: "https://www.facebook.com/brandsdigitals/" },
+                { icon: Instagram, href: "https://www.instagram.com/brandsdigitals.agency/" },
+                { icon: Twitter, href: "https://x.com/BrandsDigitals" },
+                { icon: Clutch, href: "https://clutch.co/profile/brands-digital-agency" }
+              ].map(({ icon: Icon, href }, idx) => (
                 <Link
                   key={idx}
-                  href="#"
+                  href={href}
+                  target="_blank"
                   className="w-10 h-10 border border-white/7 rounded-lg flex items-center justify-center text-muted hover:border-brand-blue-light hover:text-white transition-all duration-200"
                 >
                   <Icon size={18} />
@@ -93,8 +103,6 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 gap-6">
           <p className="text-xs text-muted font-light">
             © {new Date().getFullYear()} Brands Digitals Agency. All rights reserved. 
-            <span className="hidden md:inline mx-2 text-white/10">|</span>
-            Built by <span className="text-brand-blue-light hover:underline cursor-pointer">Mercien</span>.
           </p>
           <div className="bg-white/4 border border-white/7 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest text-muted font-medium">
             Lagos, Nigeria 🇳🇬

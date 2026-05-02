@@ -7,7 +7,8 @@ import { FaqAccordion } from "@/components/contact/FaqAccordion";
 import { Button } from "@/components/ui/Button";
 import { LeadModal } from "@/components/ui/lead-modal/LeadModal";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Briefcase, Camera, Send } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { LinkedinIcon as Linkedin, FacebookIcon as Facebook, InstagramIcon as Instagram, TwitterIcon as Twitter, ClutchIcon as Clutch } from "@/components/ui/SocialIcons";
 
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -62,13 +63,13 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <a href="tel:+23400000000" className="flex items-center gap-6 group">
+                <a href="tel:+2348132539700" className="flex items-center gap-6 group">
                   <div className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted group-hover:border-brand-blue-light group-hover:text-brand-blue-light transition-all duration-300">
                     <Phone size={20} />
                   </div>
                   <div>
                     <span className="block text-[10px] text-muted-lt font-bold uppercase tracking-widest mb-1">Call Us</span>
-                    <span className="text-lg text-white font-medium group-hover:text-brand-blue-light transition-colors">+234 (0) xxx xxx xxxx</span>
+                    <span className="text-lg text-white font-medium group-hover:text-brand-blue-light transition-colors">+234 813 253 9700</span>
                   </div>
                 </a>
 
@@ -89,8 +90,14 @@ export default function ContactPage() {
                 Follow the Transformation
               </h3>
               <div className="flex gap-4">
-                {[Briefcase, Camera, Send].map((Icon, idx) => (
-                  <a key={idx} href="#" className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted hover:border-brand-blue-light hover:text-brand-blue-light transition-all duration-300">
+                {[
+                  { icon: Linkedin, href: "https://ng.linkedin.com/company/brands-digitals-agency" },
+                  { icon: Facebook, href: "https://www.facebook.com/brandsdigitals/" },
+                  { icon: Instagram, href: "https://www.instagram.com/brandsdigitals.agency/" },
+                  { icon: Twitter, href: "https://x.com/BrandsDigitals" },
+                  { icon: Clutch, href: "https://clutch.co/profile/brands-digital-agency" }
+                ].map(({ icon: Icon, href }, idx) => (
+                  <a key={idx} href={href} target="_blank" className="w-12 h-12 rounded-xl bg-white/4 border border-white/7 flex items-center justify-center text-muted hover:border-brand-blue-light hover:text-brand-blue-light transition-all duration-300">
                     <Icon size={20} />
                   </a>
                 ))}

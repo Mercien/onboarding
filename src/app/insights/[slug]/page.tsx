@@ -77,6 +77,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
               value={post.body} 
               components={{
                 types: {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   image: ({ value }: any) => {
                     const ref = value?.asset?._ref;
                     if (!ref) return null;

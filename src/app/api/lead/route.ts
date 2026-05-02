@@ -72,10 +72,10 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Lead Processing Error:', error);
     return NextResponse.json(
-      { success: false, message: error.message },
+      { success: false, message: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

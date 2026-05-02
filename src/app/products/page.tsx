@@ -14,7 +14,7 @@ const fadeUp: Variants = {
   visible: (custom: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" as any }
+    transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" }
   })
 };
 
@@ -175,7 +175,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">FlowDesk Nexus</h2>
-            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// CRM & Business Operations Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">{"// CRM & Business Operations Platform"}</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               The CRM that Nigerian businesses actually use. FlowDesk Nexus was built because every CRM tool on the market was designed for Silicon Valley startups — not for a Lagos restaurant owner tracking reservations or an Ibadan law firm managing client cases.
@@ -227,7 +227,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">AdForge</h2>
-            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// AI Ad Creative Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">{"// AI Ad Creative Platform"}</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               Creating ads that convert is the hardest part of digital marketing. AdForge eliminates that bottleneck. Feed it a creative brief and it outputs multiple on-brand ad variations ready for Meta, Google, and TikTok in seconds, not days.
@@ -381,7 +381,7 @@ export default function ProductsPage() {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-display font-extrabold tracking-tight mb-2">DeepReach</h2>
-            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">// AI Lead Generation & Outreach</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6 tracking-wide">{"// AI Lead Generation & Outreach"}</div>
             
             <p className="text-muted text-lg font-light leading-relaxed mb-10">
               Finding the right prospect in Nigeria is harder than it should be. There&apos;s no clean B2B database. DeepReach fixes that — using AI to build, score, and reach laser-targeted prospect lists.

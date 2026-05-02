@@ -15,9 +15,9 @@
   --color-foreground: #ffffff;
   --color-background: #080C16;
 
-  --font-display: "var(--font-syne)", sans-serif;
-  --font-body: "var(--font-dm-sans)", sans-serif;
-  --font-mono: "var(--font-jetbrains)", monospace;
+  --font-display: var(--font-syne), sans-serif;
+  --font-body: var(--font-dm-sans), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
 }
 
 :root {

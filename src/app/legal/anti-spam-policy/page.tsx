@@ -18,7 +18,7 @@ export default function AntiSpamPolicyPage() {
       <p>Last Updated: {lastUpdated}</p>
 
       <p>
-        Brands Digitals Agency deploys high-velocity marketing automation and outbound pipelines (such as our proprietary DeepReach software). As a structural rule of our engineering ethos, we strictly prohibit the generation or deployment of "Spam".
+        Brands Digitals Agency deploys high-velocity marketing automation and outbound pipelines (such as our proprietary DeepReach software). As a structural rule of our engineering ethos, we strictly prohibit the generation or deployment of &quot;Spam&quot;.
       </p>
 
       <h2>1. Definition of Spam</h2>

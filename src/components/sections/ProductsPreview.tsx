@@ -14,7 +14,7 @@ export function ProductsPreview() {
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" as any }
+      transition: { delay: custom * 0.1, duration: 0.7, ease: "easeOut" }
     })
   };
 
@@ -61,7 +61,7 @@ export function ProductsPreview() {
             </div>
             
             <h3 className="text-3xl font-display font-bold tracking-tight mb-2">FlowDesk Nexus</h3>
-            <div className="font-mono text-sm text-brand-blue-light mb-6">// CRM & Business Operations Platform</div>
+            <div className="font-mono text-sm text-brand-blue-light mb-6">{"// CRM & Business Operations Platform"}</div>
             
             <p className="text-muted text-sm leading-relaxed font-light max-w-lg mb-8">
               The CRM built specifically for Nigerian businesses. Manage your customers, track your pipeline, automate your follow-ups, and measure your growth — all in one place, without the complexity of HubSpot or the cost of Salesforce.
@@ -127,7 +127,7 @@ export function ProductsPreview() {
             </div>
             
             <h4 className="text-2xl font-display font-bold tracking-tight mb-1">AdForge</h4>
-            <div className="font-mono text-[11px] text-brand-blue-light mb-4">// AI Ad Creative Platform</div>
+            <div className="font-mono text-[11px] text-brand-blue-light mb-4">{"// AI Ad Creative Platform"}</div>
             
             <p className="text-muted text-sm font-light leading-relaxed mb-8 max-w-sm">
               Brief in. Multiple high-converting ad creatives out — in seconds. Uses AI to generate on-brand ad variations for Meta, Google, and TikTok.
@@ -152,7 +152,7 @@ export function ProductsPreview() {
             </div>
             
             <h4 className="text-2xl font-display font-bold tracking-tight mb-1">DeepReach</h4>
-            <div className="font-mono text-[11px] text-brand-blue-light mb-4">// AI Lead Generation & Outreach</div>
+            <div className="font-mono text-[11px] text-brand-blue-light mb-4">{"// AI Lead Generation & Outreach"}</div>
             
             <p className="text-muted text-sm font-light leading-relaxed mb-8 max-w-sm">
               Find, qualify, and reach your ideal prospects at scale. Uses AI to build targeted lead lists and automate personalised outreach sequences.

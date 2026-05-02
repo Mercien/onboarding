@@ -7,6 +7,8 @@ import { ServiceTier } from "@/components/services/ServiceTier";
 import { PackageCard } from "@/components/services/PackageCard";
 import { RetainerCard } from "@/components/services/RetainerCard";
 import { LeadModal } from "@/components/ui/lead-modal/LeadModal";
+import { Button } from "@/components/ui/Button";
+import { ServiceCardsGrid } from "@/components/services/ServiceCardsGrid";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
@@ -161,6 +163,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Individual Service Pages Grid */}
+      <ServiceCardsGrid />
+
       {/* Tiers Layer */}
       {TIERS.map((tier, idx) => (
         <ServiceTier
@@ -228,12 +233,14 @@ export default function ServicesPage() {
         <p className="text-muted text-lg mb-12 max-w-2xl mx-auto font-light">
           Let&apos;s hop on a 20-minute discovery call and figure it out together. No pressure, just strategy.
         </p>
-        <button
+        <Button
           onClick={() => openModal("Not sure")}
-          className="bg-white text-navy px-10 py-4 rounded-xl font-bold hover:translate-y-[-2px] transition-all shadow-xl hover:shadow-white/10"
+          variant="primary"
+          size="lg"
+          className="px-10 py-4"
         >
           Let&apos;s Talk →
-        </button>
+        </Button>
       </section>
 
       <Footer />

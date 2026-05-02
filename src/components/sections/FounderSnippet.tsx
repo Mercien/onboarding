@@ -18,11 +18,12 @@ export function FounderSnippet() {
           <div className="bg-navy-card border border-white/7 rounded-2xl overflow-hidden aspect-[4/5] flex items-end relative shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-tr from-navy-mid to-transparent opacity-60 z-10" />
             <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-light/5 to-navy-mid/80" />
-            
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-display font-extrabold text-[120px] text-brand-blue-light/10 select-none tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
-              ADO
-            </div>
-            
+            <Image 
+              src="/aanu.jpeg" 
+              alt="Aanu Damilare Oke" 
+              fill 
+              className="object-cover object-center absolute inset-0 z-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500" 
+            />
             <div className="absolute top-8 right-8 z-20 bg-navy/90 border border-white/7 p-4 rounded-xl text-center shadow-lg transform group-hover:scale-105 transition-transform">
               <strong className="block font-display font-bold text-xs uppercase tracking-widest text-white">
                 BSc & MSc
@@ -41,7 +42,7 @@ export function FounderSnippet() {
               </span>
             </div>
             
-            {/* TODO: Replace with <Image src="/mercien-photo.jpg"> when photo is ready */}
+            {/* Image added above */}
           </div>
         </motion.div>
 

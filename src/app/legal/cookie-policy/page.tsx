@@ -18,7 +18,7 @@ export default function CookiePolicyPage() {
       <p>Last Updated: {lastUpdated}</p>
 
       <p>
-        Brands Digitals Agency processes small data files called "cookies" directly on your device. We use this fundamental technology to analyze digital traffic, secure your active sessions within our platforms, and deliver hyper-contextualized product experiences.
+        Brands Digitals Agency processes small data files called &quot;cookies&quot; directly on your device. We use this fundamental technology to analyze digital traffic, secure your active sessions within our platforms, and deliver hyper-contextualized product experiences.
       </p>
 
       <h2>1. What Are Cookies?</h2>
